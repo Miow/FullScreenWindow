@@ -18,4 +18,5 @@ FullScreenWindow::~FullScreenWindow()
 void FullScreenWindow::on_pushButton_wAdd_clicked()
 {
 	ui.pushButton_wAdd->setDisabled(true);
+
 }

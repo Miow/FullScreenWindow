@@ -68,6 +68,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Boost\include\boost-1_57;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);C:\Boost\lib\i386;</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -139,7 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DefaultProfile.cpp" />
+    <ClCompile Include="CustomProfile.cpp" />
     <ClCompile Include="fullscreenwindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -161,7 +163,8 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Profile.cpp" />
-    <ClCompile Include="UserProfile.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowHandling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.h">
@@ -204,10 +207,11 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DefaultProfile.h" />
+    <ClInclude Include="CustomProfile.h" />
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h" />
     <ClInclude Include="Profile.h" />
-    <ClInclude Include="UserProfile.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowHandling.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.qrc">

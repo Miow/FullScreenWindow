@@ -39,6 +39,12 @@
     <Filter Include="Source Files\Options">
       <UniqueIdentifier>{7d08688b-4db3-4aa1-8827-a4284bba4106}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Wrapper">
+      <UniqueIdentifier>{33d401e3-9d3f-46f1-929a-7cfaedf5b2dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Wrapper">
+      <UniqueIdentifier>{ac775ef4-ea1e-4626-b631-0c57b9e3979b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,11 +65,14 @@
     <ClCompile Include="Profile.cpp">
       <Filter>Source Files\Options</Filter>
     </ClCompile>
-    <ClCompile Include="UserProfile.cpp">
+    <ClCompile Include="CustomProfile.cpp">
       <Filter>Source Files\Options</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultProfile.cpp">
+    <ClCompile Include="Window.cpp">
       <Filter>Source Files\Options</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowHandling.cpp">
+      <Filter>Source Files\Wrapper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,14 +90,17 @@
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserProfile.h">
-      <Filter>Header Files\Options</Filter>
-    </ClInclude>
     <ClInclude Include="Profile.h">
       <Filter>Header Files\Options</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultProfile.h">
+    <ClInclude Include="CustomProfile.h">
       <Filter>Header Files\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowHandling.h">
+      <Filter>Header Files\Wrapper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
