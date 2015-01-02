@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DefaultProfile.cpp" />
     <ClCompile Include="fullscreenwindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -159,6 +160,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Profile.cpp" />
+    <ClCompile Include="UserProfile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.h">
@@ -201,7 +204,10 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DefaultProfile.h" />
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h" />
+    <ClInclude Include="Profile.h" />
+    <ClInclude Include="UserProfile.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.qrc">
