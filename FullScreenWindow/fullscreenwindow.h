@@ -14,6 +14,9 @@ public:
 
 private:
 	Ui::FullScreenWindowClass ui;
+
+private slots:
+	void FullScreenWindow::on_pushButton_wAdd_clicked();
 };
 
 #endif // FULLSCREENWINDOW_H
