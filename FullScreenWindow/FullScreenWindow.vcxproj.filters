@@ -45,12 +45,15 @@
     <Filter Include="Header Files\Wrapper">
       <UniqueIdentifier>{ac775ef4-ea1e-4626-b631-0c57b9e3979b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{25a2a54a-ed0b-4c5b-b9d7-246e181b8dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{aabb8895-725f-4a6f-b3db-eb5745be82b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="fullscreenwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
@@ -65,9 +68,6 @@
     <ClCompile Include="Profile.cpp">
       <Filter>Source Files\Options</Filter>
     </ClCompile>
-    <ClCompile Include="CustomProfile.cpp">
-      <Filter>Source Files\Options</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\Options</Filter>
     </ClCompile>
@@ -77,16 +77,28 @@
     <ClCompile Include="log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fullscreenwindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Monitor.cpp">
+      <Filter>Source Files\Options</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorHandling.cpp">
+      <Filter>Source Files\Wrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="fullscreenwindow.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="fullscreenwindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="fullscreenwindow.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fullscreenwindow.h">
+      <Filter>Header Files\UI</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -96,13 +108,19 @@
     <ClInclude Include="Profile.h">
       <Filter>Header Files\Options</Filter>
     </ClInclude>
-    <ClInclude Include="CustomProfile.h">
-      <Filter>Header Files\Options</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\Options</Filter>
     </ClInclude>
     <ClInclude Include="WindowHandling.h">
+      <Filter>Header Files\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Monitor.h">
+      <Filter>Header Files\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="MonitorHandling.h">
       <Filter>Header Files\Wrapper</Filter>
     </ClInclude>
     <ClInclude Include="log.h">

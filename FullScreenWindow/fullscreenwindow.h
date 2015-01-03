@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_fullscreenwindow.h"
+#include "Preview.h"
 
 class FullScreenWindow : public QMainWindow
 {
@@ -12,11 +13,13 @@ public:
 	FullScreenWindow(QWidget *parent = 0);
 	~FullScreenWindow();
 
+	Preview* preview;
+
 private:
 	Ui::FullScreenWindowClass ui;
 
 private slots:
-	void FullScreenWindow::on_pushButton_wAdd_clicked();
+	void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked();
 };
 
 #endif // FULLSCREENWINDOW_H

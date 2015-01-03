@@ -2,6 +2,7 @@
 #include <QtWidgets/QApplication>
 
 #include "WindowHandling.h"
+#include "MonitorHandling.h"
 #include "log.h"
 
 
@@ -14,7 +15,8 @@ int main(int argc, char *argv[])
 	
 	Wrapper::WindowHandling::moveAndResizeWindow(*wh, 100, 300, 500, 200);
 
-
+	Monitorlist* monList = new Monitorlist();
+	Wrapper::MonitorHandling::getMonitors(monList);
 
 	
 	QApplication a(argc, argv);

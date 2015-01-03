@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>627</height>
+    <width>494</width>
+    <height>749</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,104 +15,8 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QGroupBox" name="groupBox_window">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>450</width>
-        <height>150</height>
-       </size>
-      </property>
-      <property name="title">
-       <string>Select a window ...</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QListView" name="listView">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>150</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="baseSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_Enabled">
-             <property name="text">
-              <string>fgjhgjfghjgfhj</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QPushButton" name="pushButton_wAdd">
-             <property name="text">
-              <string>Add a new window</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_wRemove">
-             <property name="text">
-              <string>Remove</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_wRename">
-             <property name="text">
-              <string>Rename</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
     <item row="4" column="0">
-     <widget class="QGroupBox" name="groupBox_profilesSettings">
+     <widget class="QGroupBox" name="groupBox_ProfileSettings">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -121,6 +25,9 @@
       </property>
       <property name="title">
        <string>Profile settings</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="1" column="0">
@@ -131,16 +38,16 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <layout class="QGridLayout" name="gridLayout_profiles">
+        <layout class="QGridLayout" name="gridLayout_Profiles">
          <item row="0" column="1">
           <widget class="QPushButton" name="pushButton_Profile_Save">
            <property name="text">
-            <string>Save as ...</string>
+            <string>Save</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QComboBox" name="comboBox_Profile">
+          <widget class="QComboBox" name="comboBox_ProfileSelection_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -158,10 +65,17 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QPushButton" name="pushButton_Profile_Delete">
            <property name="text">
             <string>Delete</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="pushButton_Profile_SaveAs">
+           <property name="text">
+            <string>Save as ...</string>
            </property>
           </widget>
          </item>
@@ -171,52 +85,6 @@
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <layout class="QGridLayout" name="gridLayout_14">
-           <item row="0" column="0">
-            <widget class="QGroupBox" name="groupBox_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="title">
-              <string>Preview</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_11">
-              <item row="0" column="0">
-               <widget class="QGraphicsView" name="graphicsView">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>240</width>
-                  <height>125</height>
-                 </size>
-                </property>
-                <property name="baseSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="acceptDrops">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
            <item row="0" column="1">
             <widget class="QGroupBox" name="groupBox_Parameters">
              <property name="title">
@@ -277,6 +145,52 @@
                  </spacer>
                 </item>
                </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Preview</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QGraphicsView" name="graphicsView_Preview">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>240</width>
+                  <height>125</height>
+                 </size>
+                </property>
+                <property name="baseSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="acceptDrops">
+                 <bool>false</bool>
+                </property>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -698,6 +612,102 @@
       </layout>
      </widget>
     </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="groupBox_window">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>450</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Select a window ...</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QListView" name="listView">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_Enabled">
+             <property name="text">
+              <string>fgjhgjfghjgfhj</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton_wAdd">
+             <property name="text">
+              <string>Add a new window</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_wRemove">
+             <property name="text">
+              <string>Remove</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_wRename">
+             <property name="text">
+              <string>Rename</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="7" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
@@ -717,7 +727,7 @@
      </layout>
     </item>
     <item row="2" column="0">
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="groupBox_ProfileSelection">
       <property name="title">
        <string>Select a profile for this window</string>
       </property>
@@ -728,28 +738,24 @@
           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
          </property>
          <item row="0" column="0">
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="label_ProfileSelection">
            <property name="text">
             <string>Select a profile:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox"/>
+          <widget class="QComboBox" name="comboBox_ProfileSelection"/>
          </item>
-        </layout>
-       </item>
-       <item row="1" column="0">
-        <layout class="QFormLayout" name="formLayout_6">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_ProcessName"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_ProcessName">
            <property name="text">
-            <string>Name of the process associated with the window (optional):</string>
+            <string>Process name:</string>
            </property>
           </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
          </item>
         </layout>
        </item>
@@ -759,7 +765,7 @@
     <item row="3" column="0">
      <widget class="QPushButton" name="pushButton_toggleProfilesSettings">
       <property name="text">
-       <string>PushButton</string>
+       <string>Profile settings &gt;&gt;&gt;</string>
       </property>
      </widget>
     </item>
@@ -770,7 +776,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>496</width>
+     <width>494</width>
      <height>21</height>
     </rect>
    </property>
@@ -824,7 +830,7 @@
  <tabstops>
   <tabstop>pushButton_wAdd</tabstop>
   <tabstop>pushButton_wRemove</tabstop>
-  <tabstop>comboBox_Profile</tabstop>
+  <tabstop>comboBox_ProfileSelection_2</tabstop>
   <tabstop>pushButton_Profile_Save</tabstop>
   <tabstop>pushButton_Profile_Delete</tabstop>
   <tabstop>comboBox_Monitor</tabstop>
@@ -839,7 +845,7 @@
   <tabstop>radioButton_4</tabstop>
   <tabstop>radioButton_5</tabstop>
   <tabstop>radioButton_7</tabstop>
-  <tabstop>graphicsView</tabstop>
+  <tabstop>graphicsView_Preview</tabstop>
  </tabstops>
  <resources>
   <include location="fullscreenwindow.qrc"/>
