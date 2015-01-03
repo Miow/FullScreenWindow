@@ -74,6 +74,9 @@
     <ClCompile Include="WindowHandling.cpp">
       <Filter>Source Files\Wrapper</Filter>
     </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.h">
@@ -102,5 +105,13 @@
     <ClInclude Include="WindowHandling.h">
       <Filter>Header Files\Wrapper</Filter>
     </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="debug.log">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
