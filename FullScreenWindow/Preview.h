@@ -16,15 +16,16 @@ public:
 
 	void init();
 	void update(const Monitor mon, const Profile pro);
-	void drawScreen(int width, int height);
-	void drawWindow(int xpos, int ypos, int width, int height, int hasTitleBar);
+	void drawScreen(double width, double height);
+	void drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, double screenWidth, double screenHeight);
 
 private:
 	// Size of the preview, 0,0 is in the top left corner
-	int gX, gY, gWidth, gHeight;
-	int sX, sY, sWidth, sHeight;
+	double gX, gY, gWidth, gHeight;
+	double sX, sY, sWidth, sHeight;
+	double wX, wY, wWidth, wHeight;
 
-	int cBorderWidth,
+	double cBorderWidth,
 		cTaskBarHeight, cTaskBarButtonSize,
 		cWindowTitleBarHeight, cWindowMenuBarHeight;
 
