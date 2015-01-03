@@ -3,8 +3,9 @@
 
 #include "WindowHandling.h"
 #include "MonitorHandling.h"
-#include "log.h"
 
+#include "Monitor.h"
+#include "MonitorList.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,9 +14,9 @@ int main(int argc, char *argv[])
 	Wrapper::WindowHandle* wh = new Wrapper::WindowHandle();
 	Wrapper::WindowHandling::getWindowByName(L"VLC media player", wh);
 	
-	Wrapper::WindowHandling::moveAndResizeWindow(*wh, 100, 300, 500, 200);
+	Wrapper::WindowHandling::moveAndResizeWindow(*wh, -1000, 300, 500, 200);
 
-	Monitorlist* monList = new Monitorlist();
+	std::shared_ptr<MonitorList> monList(new MonitorList());
 	Wrapper::MonitorHandling::getMonitors(monList);
 
 	

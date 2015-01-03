@@ -1,5 +1,4 @@
 #include "WindowHandling.h"
-#include "log.h"
 
 namespace Wrapper
 {

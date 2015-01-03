@@ -1,6 +1,8 @@
 #pragma once
+#include "main.h"
 
 #include "Monitor.h"
+#include "MonitorList.h"
 
 #include <string>
 #include <windows.h>
@@ -12,7 +14,7 @@ namespace Wrapper
 	{
 		// Populate the MonitorList with the informations from every active monitor
 		// note that the dimentions of the monitor might not be populated instanteneously
-		void getMonitors(Monitorlist* monList);
+		void getMonitors(std::shared_ptr<MonitorList> monList);
 
 
 		// Callback function for the EnumDisplayMonitors function

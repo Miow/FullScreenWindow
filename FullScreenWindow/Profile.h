@@ -1,8 +1,10 @@
 #pragma once
+#include "main.h"
 
 #include <string>
 
-enum Anchor {
+enum Anchor
+{
 	TOPLEFT,
 	TOPRIGHT,
 	CENTER,
@@ -10,7 +12,8 @@ enum Anchor {
 	BOTTOMRIGHT
 };
 
-class Screen {
+class Screen
+{
 
 };
 

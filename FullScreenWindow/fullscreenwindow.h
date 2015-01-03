@@ -1,5 +1,6 @@
 #ifndef FULLSCREENWINDOW_H
 #define FULLSCREENWINDOW_H
+#include "main.h"
 
 #include <QtWidgets/QMainWindow>
 #include "ui_fullscreenwindow.h"
