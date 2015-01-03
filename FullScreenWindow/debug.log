@@ -1,5 +1,1 @@
-1 | [ 2015-01-03 11:42:09]: <info> (WindowHandling.cpp:14:Wrapper::WindowHandling::getWindowByName) Window "VLC media player" found.
-2 | [ 2015-01-03 11:42:09]: <info> (WindowHandling.cpp:47:Wrapper::WindowHandling::moveAndResizeWindow) Window "VLC media player" resized to 500x200 and moved to (-1000, 300).
-3 | [ 2015-01-03 11:42:09]: <info> (MonitorHandling.cpp:47:Wrapper::MonitorHandling::MonitorEnumProc) PRIMARY Monitor "\\.\DISPLAY1" found, coordonates: [(0, 0), (1920, 1080)].
-4 | [ 2015-01-03 11:42:09]: <info> (MonitorHandling.cpp:47:Wrapper::MonitorHandling::MonitorEnumProc) Monitor "\\.\DISPLAY2" found, coordonates: [(-1680, 0), (0, 1050)].
-5 | [ 2015-01-03 11:42:11]: <info> (Preview.cpp:27:Preview::Preview) 0 - 0 - 237 - 122
+1 | [ 2015-01-03 12:14:49]: <info> (Preview.cpp:27:Preview::Preview) 0 - 0 - 237 - 122

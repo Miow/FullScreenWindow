@@ -1,5 +1,7 @@
 #pragma once
+
 #include "main.h"
+#include "Profile.h"
 
 #include <string>
 
@@ -9,7 +11,10 @@ public:
 	Window();
 	~Window();
 
-private:
-	std::string name;
+	std::wstring name;
+	std::wstring processName;
+
+	std::unique_ptr<Profile> pro;
+
 };
 

@@ -11,13 +11,8 @@ int main(int argc, char *argv[])
 {
 	initLog();
 
-	Wrapper::WindowHandle* wh = new Wrapper::WindowHandle();
-	Wrapper::WindowHandling::getWindowByName(L"VLC media player", wh);
-	
-	Wrapper::WindowHandling::moveAndResizeWindow(*wh, -1000, 300, 500, 200);
-
-	std::shared_ptr<MonitorList> monList(new MonitorList());
-	Wrapper::MonitorHandling::getMonitors(monList);
+	ProfileList proList;
+	Profile::initDefaults(&proList);
 
 	
 	QApplication a(argc, argv);
