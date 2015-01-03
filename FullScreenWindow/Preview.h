@@ -17,17 +17,35 @@ public:
 	void init();
 	void update(const Monitor mon, const Profile pro);
 	void drawScreen(int width, int height);
+	void drawWindow(int xpos, int ypos, int width, int height, int hasTitleBar);
 
 private:
 	// Size of the preview, 0,0 is in the top left corner
-	int left,top,right,bottom;
+	int gX, gY, gWidth, gHeight;
+	int sX, sY, sWidth, sHeight;
 
+	int cBorderWidth,
+		cTaskBarHeight, cTaskBarButtonSize,
+		cWindowTitleBarHeight, cWindowMenuBarHeight;
 
 	QGraphicsView* preview;
 	QGraphicsScene* scene;
-	QBrush wallpaperBrush;
-	QPen borderPen;
 
-	QGraphicsRectItem* screen;
+	QPen invisiblePen;
+
+	QBrush borderBrush,
+		screenBrush,
+		taskBarBrush, taskBarButtonBrush,
+		windowBrush,
+		windowTitleBarBrush,
+		windowMenuBarBrush;
+
+	QGraphicsRectItem
+		*border,
+		*screen,
+		*taskBar, *taskBarButton,
+		*window,
+		*windowTitleBar,
+		*windowMenuBar;
 };
 
