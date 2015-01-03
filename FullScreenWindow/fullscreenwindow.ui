@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
+    <width>496</width>
     <height>749</height>
    </rect>
   </property>
@@ -171,8 +171,8 @@
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
-                  <height>0</height>
+                  <width>240</width>
+                  <height>125</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -183,12 +183,15 @@
                 </property>
                 <property name="baseSize">
                  <size>
-                  <width>0</width>
-                  <height>0</height>
+                  <width>240</width>
+                  <height>125</height>
                  </size>
                 </property>
                 <property name="acceptDrops">
                  <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background: transparent</string>
                 </property>
                </widget>
               </item>
@@ -776,7 +779,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>494</width>
+     <width>496</width>
      <height>21</height>
     </rect>
    </property>
