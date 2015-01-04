@@ -5,10 +5,6 @@
 int main(int argc, char *argv[])
 {
 	initLog();
-	/*
-	ProfileList proList;
-	Profile::initDefaults(&proList);
-	*/
 	
 	QApplication a(argc, argv);
 	FullScreenWindow w;

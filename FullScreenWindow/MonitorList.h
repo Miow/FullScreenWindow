@@ -22,7 +22,7 @@ public:
 
 	void add(std::shared_ptr<Monitor> mon);
 
-private:
+	// Made public only for sequential read access
 	std::vector < std::shared_ptr<Monitor> > monList;
 
 };

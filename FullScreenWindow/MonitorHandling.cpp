@@ -41,7 +41,7 @@ namespace Wrapper
 
 			std::shared_ptr<Monitor> mon(new Monitor(name, isPrimary, left, top, right, bottom));
 
-			MonitorList* monList = (MonitorList*)dwData;
+			MonitorList* monList = *(MonitorList**)dwData;
 			monList->add(mon);
 
 			LOG(info) << ((isPrimary) ? "PRIMARY " : "") << "Monitor \"" << name.c_str() << "\" found, coordonates: [(" << left << ", " << top << "), (" << right << ", " << bottom << ")].";

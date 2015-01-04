@@ -16,7 +16,7 @@ enum Anchor
 };
 
 class Profile;
-typedef std::vector<std::unique_ptr<Profile>> ProfileList;
+typedef std::vector<std::shared_ptr<Profile>> ProfileList;
 
 class Profile
 {

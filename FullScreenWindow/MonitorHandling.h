@@ -1,7 +1,6 @@
 #pragma once
 #include "main.h"
 
-#include "Monitor.h"
 #include "MonitorList.h"
 
 #include <string>

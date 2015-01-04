@@ -4,7 +4,6 @@
 MonitorList::MonitorList()
 {
 	monList = std::vector < std::shared_ptr<Monitor> >();
-	update();
 }
 
 MonitorList::~MonitorList()
@@ -14,6 +13,7 @@ MonitorList::~MonitorList()
 
 void MonitorList::update()
 {
+	monList.clear();
 	Wrapper::MonitorHandling::getMonitors(this);
 }
 

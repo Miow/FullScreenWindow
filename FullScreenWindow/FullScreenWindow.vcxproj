@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="fullscreenwindow.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -214,6 +215,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MonitorList.h" />

@@ -95,6 +95,9 @@
     <ClCompile Include="MonitorList.cpp">
       <Filter>Source Files\Options</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.ui">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="MonitorList.h">
       <Filter>Header Files\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
