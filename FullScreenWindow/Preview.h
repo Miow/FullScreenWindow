@@ -27,7 +27,7 @@ private:
 
 	double cBorderWidth,
 		cTaskBarHeight, cTaskBarButtonSize,
-		cWindowTitleBarHeight, cWindowMenuBarHeight;
+		cWindowBorderWidth, cWindowTitleBarHeight, cWindowMenuBarHeight;
 
 	QGraphicsView* preview;
 	QGraphicsScene* scene;
@@ -37,16 +37,16 @@ private:
 	QBrush borderBrush,
 		screenBrush,
 		taskBarBrush, taskBarButtonBrush,
-		windowBrush,
+		windowContentBrush,
 		windowTitleBarBrush,
-		windowMenuBarBrush;
+		windowBackgroundBrush;
 
 	QGraphicsRectItem
 		*border,
 		*screen,
 		*taskBar, *taskBarButton,
-		*window,
+		*windowContent,
 		*windowTitleBar,
-		*windowMenuBar;
+		*windowBackground;
 };
 

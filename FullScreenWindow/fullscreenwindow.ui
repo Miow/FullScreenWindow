@@ -789,7 +789,6 @@ border: none</string>
      <string>File</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="actionClose"/>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
