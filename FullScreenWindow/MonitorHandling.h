@@ -7,14 +7,14 @@
 #include <string>
 #include <windows.h>
 
+class MonitorList;
 
 namespace Wrapper
 {
 	namespace MonitorHandling
 	{
 		// Populate the MonitorList with the informations from every active monitor
-		// note that the dimentions of the monitor might not be populated instanteneously
-		void getMonitors(std::shared_ptr<MonitorList> monList);
+		void getMonitors(MonitorList* monList);
 
 
 		// Callback function for the EnumDisplayMonitors function
@@ -25,7 +25,7 @@ namespace Wrapper
 			_In_  LPARAM dwData
 			);
 
-
+		
 	};
 
 };

@@ -4,11 +4,20 @@
 MonitorList::MonitorList()
 {
 	monList = std::vector < std::shared_ptr<Monitor> >();
+	update();
 }
 
 MonitorList::~MonitorList()
 {
 }
+
+
+void MonitorList::update()
+{
+	Wrapper::MonitorHandling::getMonitors(this);
+}
+
+
 
 std::shared_ptr<Monitor> MonitorList::getMonitorByName(const std::wstring name)
 {

@@ -14,7 +14,7 @@ public:
 	Preview(QGraphicsView* preview);
 	~Preview();
 
-	void init();
+	void defaultView();
 	void update(const Monitor mon, const Profile pro);
 	void drawScreen(double width, double height);
 	void drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, double screenWidth, double screenHeight);
