@@ -168,6 +168,8 @@
     <ClCompile Include="MonitorList.cpp" />
     <ClCompile Include="Preview.cpp" />
     <ClCompile Include="Profile.cpp" />
+    <ClCompile Include="Parameters.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -219,6 +221,8 @@
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MonitorList.h" />
+    <ClInclude Include="Parameters.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="Monitor.h" />

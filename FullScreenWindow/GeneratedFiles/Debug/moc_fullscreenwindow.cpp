@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FullScreenWindow_t {
     QByteArrayData data[5];
-    char stringdata[99];
+    char stringdata[109];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,13 +32,14 @@ static const qt_meta_stringdata_FullScreenWindow_t qt_meta_stringdata_FullScreen
 QT_MOC_LITERAL(0, 0, 16), // "FullScreenWindow"
 QT_MOC_LITERAL(1, 17, 44), // "on_pushButton_toggleProfilesS..."
 QT_MOC_LITERAL(2, 62, 0), // ""
-QT_MOC_LITERAL(3, 63, 29), // "on_comboBox_Monitor_activated"
-QT_MOC_LITERAL(4, 93, 5) // "index"
+QT_MOC_LITERAL(3, 63, 39), // "on_comboBox_Monitor_currentIn..."
+QT_MOC_LITERAL(4, 103, 5) // "index"
 
     },
     "FullScreenWindow\0"
     "on_pushButton_toggleProfilesSettings_clicked\0"
-    "\0on_comboBox_Monitor_activated\0index"
+    "\0on_comboBox_Monitor_currentIndexChanged\0"
+    "index"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +73,7 @@ void FullScreenWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         FullScreenWindow *_t = static_cast<FullScreenWindow *>(_o);
         switch (_id) {
         case 0: _t->on_pushButton_toggleProfilesSettings_clicked(); break;
-        case 1: _t->on_comboBox_Monitor_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->on_comboBox_Monitor_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }

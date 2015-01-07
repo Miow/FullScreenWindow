@@ -51,6 +51,12 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{aabb8895-725f-4a6f-b3db-eb5745be82b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\Settings">
+      <UniqueIdentifier>{4ff6d368-a699-4d42-9eb7-3894fcbee646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\Settings">
+      <UniqueIdentifier>{f30a7949-0ade-4a47-8298-6311c3dd1e03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parameters.cpp">
+      <Filter>Source Files\UI\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files\UI\Settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +158,12 @@
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameters.h">
+      <Filter>Header Files\UI\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header Files\UI\Settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

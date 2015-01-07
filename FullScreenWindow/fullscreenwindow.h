@@ -8,6 +8,7 @@
 #include "ui_fullscreenwindow.h"
 
 #include "Preview.h"
+#include "Settings.h"
 
 class FullScreenWindow : public QMainWindow
 {
@@ -20,16 +21,16 @@ public:
 	Preview* preview;
 
 private:
-	Engine engine;
 	Ui::FullScreenWindowClass ui;
+	Engine engine;
+	Settings settings;
 
 	void UpdateFromProfile(const std::shared_ptr<Profile> pro);
 
-	void update_comboBox_Monitor();
 
 private slots:
 	void on_pushButton_toggleProfilesSettings_clicked();
-	void on_comboBox_Monitor_activated(int index);
+	void on_comboBox_Monitor_currentIndexChanged(int index);
 };
 
 #endif // FULLSCREENWINDOW_H
