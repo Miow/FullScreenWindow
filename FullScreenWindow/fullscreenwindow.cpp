@@ -31,7 +31,7 @@ void FullScreenWindow::UpdateFromProfile(const std::shared_ptr<Profile> pro)
 {
 
 	// Update monitor selection box
-	std::shared_ptr<Monitor> mon = engine.monList->getMonitorByName(pro->screenName);
+	Monitor* mon = engine.monList->getMonitorByName(pro->screenName);
 	update_comboBox_Monitor();
 	// TODO: UPDATE SELECTED MONITOR
 }

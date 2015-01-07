@@ -14,7 +14,7 @@ public:
 	std::wstring name;
 	std::wstring processName;
 
-	std::unique_ptr<Profile> pro;
+	Profile* pro;
 
 };
 

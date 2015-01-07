@@ -39,7 +39,7 @@ namespace Wrapper
 				right = rect.right,
 				bottom = rect.bottom;
 
-			std::shared_ptr<Monitor> mon(new Monitor(name, isPrimary, left, top, right, bottom));
+			Monitor mon(name, isPrimary, left, top, right, bottom);
 
 			MonitorList* monList = *(MonitorList**)dwData;
 			monList->add(mon);

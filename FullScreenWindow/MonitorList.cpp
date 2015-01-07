@@ -3,7 +3,7 @@
 
 MonitorList::MonitorList()
 {
-	monList = std::vector < std::shared_ptr<Monitor> >();
+	monList = std::vector < Monitor* >();
 }
 
 MonitorList::~MonitorList()
@@ -19,7 +19,7 @@ void MonitorList::update()
 
 
 
-std::shared_ptr<Monitor> MonitorList::getMonitorByName(const std::wstring name)
+Monitor* MonitorList::getMonitorByName(const std::wstring name)
 {
 	if (name == PRIMARY)
 	{
@@ -38,7 +38,7 @@ std::shared_ptr<Monitor> MonitorList::getMonitorByName(const std::wstring name)
 	return getPrimaryMonitor();
 }
 
-std::shared_ptr<Monitor> MonitorList::getPrimaryMonitor()
+Monitor* MonitorList::getPrimaryMonitor()
 {
 	for (auto it = monList.begin(); it != monList.end(); it++)
 	{
@@ -52,7 +52,7 @@ std::shared_ptr<Monitor> MonitorList::getPrimaryMonitor()
 	return NULL;
 }
 
-void MonitorList::add(std::shared_ptr<Monitor> mon)
+void MonitorList::add(Monitor mon)
 {
-	monList.push_back(mon);
+	monList.push_back(new Monitor(mon));
 }
