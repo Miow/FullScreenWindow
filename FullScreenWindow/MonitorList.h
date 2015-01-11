@@ -22,7 +22,7 @@ public:
 
 	void add(Monitor mon);
 
-	// Made public only for sequential read access
+	// Made public only for random read access
 	std::vector <Monitor*> monList;
 
 };

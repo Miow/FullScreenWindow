@@ -4,6 +4,7 @@
 
 #include "Engine.h"
 
+#include <QStringListModel>
 #include <QtWidgets/QMainWindow>
 #include "ui_fullscreenwindow.h"
 
@@ -21,7 +22,7 @@ public:
 	Preview* preview;
 
 private:
-	Ui::FullScreenWindowClass ui;
+	Ui::FullScreenWindowClass ui; 
 	Engine engine;
 	Settings settings;
 

@@ -33,12 +33,6 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Header Files\Options">
-      <UniqueIdentifier>{a968a255-871b-494e-a26a-b6b8916dbffd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Options">
-      <UniqueIdentifier>{7d08688b-4db3-4aa1-8827-a4284bba4106}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Wrapper">
       <UniqueIdentifier>{33d401e3-9d3f-46f1-929a-7cfaedf5b2dc}</UniqueIdentifier>
     </Filter>
@@ -51,11 +45,17 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{aabb8895-725f-4a6f-b3db-eb5745be82b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UI\Settings">
-      <UniqueIdentifier>{4ff6d368-a699-4d42-9eb7-3894fcbee646}</UniqueIdentifier>
+    <Filter Include="Header Files\Settings">
+      <UniqueIdentifier>{a968a255-871b-494e-a26a-b6b8916dbffd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\UI\Settings">
+    <Filter Include="Source Files\Settings">
+      <UniqueIdentifier>{7d08688b-4db3-4aa1-8827-a4284bba4106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\UiSettings">
       <UniqueIdentifier>{f30a7949-0ade-4a47-8298-6311c3dd1e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\UiSettings">
+      <UniqueIdentifier>{4ff6d368-a699-4d42-9eb7-3894fcbee646}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,14 +68,11 @@
     <ClCompile Include="GeneratedFiles\Release\moc_fullscreenwindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_fullscreenwindow.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="Profile.cpp">
-      <Filter>Source Files\Options</Filter>
+      <Filter>Source Files\Settings</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Options</Filter>
+      <Filter>Source Files\Settings</Filter>
     </ClCompile>
     <ClCompile Include="WindowHandling.cpp">
       <Filter>Source Files\Wrapper</Filter>
@@ -90,7 +87,7 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="Monitor.cpp">
-      <Filter>Source Files\Options</Filter>
+      <Filter>Source Files\Settings</Filter>
     </ClCompile>
     <ClCompile Include="MonitorHandling.cpp">
       <Filter>Source Files\Wrapper</Filter>
@@ -99,16 +96,22 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonitorList.cpp">
-      <Filter>Source Files\Options</Filter>
+      <Filter>Source Files\Settings</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Parameters.cpp">
-      <Filter>Source Files\UI\Settings</Filter>
+      <Filter>Source Files\UI\UiSettings</Filter>
     </ClCompile>
     <ClCompile Include="Settings.cpp">
-      <Filter>Source Files\UI\Settings</Filter>
+      <Filter>Source Files\UI\UiSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowSelection.cpp">
+      <Filter>Source Files\UI\UiSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_fullscreenwindow.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,10 +130,10 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Profile.h">
-      <Filter>Header Files\Options</Filter>
+      <Filter>Header Files\Settings</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>Header Files\Options</Filter>
+      <Filter>Header Files\Settings</Filter>
     </ClInclude>
     <ClInclude Include="WindowHandling.h">
       <Filter>Header Files\Wrapper</Filter>
@@ -139,7 +142,7 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Monitor.h">
-      <Filter>Header Files\Options</Filter>
+      <Filter>Header Files\Settings</Filter>
     </ClInclude>
     <ClInclude Include="MonitorHandling.h">
       <Filter>Header Files\Wrapper</Filter>
@@ -154,16 +157,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MonitorList.h">
-      <Filter>Header Files\Options</Filter>
+      <Filter>Header Files\Settings</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Parameters.h">
-      <Filter>Header Files\UI\Settings</Filter>
+      <Filter>Header Files\UI\UiSettings</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
-      <Filter>Header Files\UI\Settings</Filter>
+      <Filter>Header Files\UI\UiSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowSelection.h">
+      <Filter>Header Files\UI\UiSettings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

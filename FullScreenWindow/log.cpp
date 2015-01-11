@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "log.h"
 
 void initLog()

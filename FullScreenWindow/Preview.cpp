@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Preview.h"
 
 Preview::Preview(QGraphicsView* previewWidget)

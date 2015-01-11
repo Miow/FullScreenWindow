@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "fullscreenwindow.h"
 #include <QtWidgets/QApplication>
 

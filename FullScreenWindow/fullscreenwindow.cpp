@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "fullscreenwindow.h"
+
 
 FullScreenWindow::FullScreenWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -6,7 +8,7 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	ui.setupUi(this);
 	engine = Engine();
 	settings = Settings(&ui, &engine);
-	ui.setupUi(this);
+	
 
 	preview = new Preview(ui.graphicsView_Preview);
 	preview->defaultView();
@@ -14,12 +16,23 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 
 	// CONNECTIONS
 	connect(ui.pushButton_toggleProfilesSettings, &QPushButton::clicked, this, &FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked);
+	// // WindowSelection
+	// Flemme de finir ça, la soltuion pour ajouter marche, reste juste a trouver le signal
+	// http://falsinsoft.blogspot.fr/2013/11/qlistwidget-and-item-edit-event.html
+	connect(ui.listView_WindowSelection, &QListWidget::currentTextChanged, this, &FullScreenWindow::on_listView_WindowSelection_currentTextChanged);
 	// // Settings
 	// // // Parameters
 	connect(ui.comboBox_Monitor, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &FullScreenWindow::on_comboBox_Monitor_currentIndexChanged);
 
-	
 
+	// temp
+	QStringListModel* model = new QStringListModel(this);
+	QStringList list;
+	list << "ITEM 1" << "ITEM 2" << "ITEM 3" << "ITEM 4"  ;
+	model->setStringList(list);
+
+	ui.listView_WindowSelection->setModel(model);
+	// /temp
 
 	UpdateFromProfile(engine.proList[0]);
 }
@@ -42,7 +55,6 @@ void FullScreenWindow::UpdateFromProfile(const std::shared_ptr<Profile> pro)
 
 
 // CONNECT
-
 void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 {
 	if (ui.groupBox_ProfileSettings->isHidden())
@@ -55,6 +67,18 @@ void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 	}
 }
 
+
+
+// // WindowSelection
+void FullScreenWindow::on_listView_WindowSelection_currentTextChanged(const QString & currentText)
+{
+
+}
+
+
+
+// // Settings
+// // // Parameters
 
 void FullScreenWindow::on_comboBox_Monitor_currentIndexChanged(int index)
 {

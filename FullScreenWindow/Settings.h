@@ -3,9 +3,10 @@
 
 #include "ui_fullscreenwindow.h"
 
-
 #include "Engine.h"
+
 #include "Parameters.h"
+#include "WindowSelection.h"
 
 class Settings
 {
@@ -18,6 +19,7 @@ public:
 	Engine* engine;
 
 	Parameters parameters;
+	WindowSelection windowSelection;
 
 
 
