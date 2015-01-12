@@ -2,10 +2,16 @@
 #include "Parameters.h"
 
 
+Parameters::Parameters(Engine* engine, QComboBox* combobox_Monitor)
+{
+	this->engine = engine;
+	
+	this->combobox_Monitor = combobox_Monitor;
+}
+
 Parameters::Parameters()
 {
 }
-
 Parameters::~Parameters()
 {
 }

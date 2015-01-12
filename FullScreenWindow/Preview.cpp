@@ -43,7 +43,7 @@ Preview::Preview(QGraphicsView* previewWidget)
 
 Preview::~Preview()
 {
-	//delete scene; // No, it's still used by Qt
+	delete scene;
 }
 
 void Preview::defaultView()

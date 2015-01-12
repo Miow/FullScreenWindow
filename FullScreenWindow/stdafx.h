@@ -10,7 +10,6 @@
 // Windows Header Files:
 #include <windows.h>
 
-#define  PRECOMPILED_HEADER = stdafx.h
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>

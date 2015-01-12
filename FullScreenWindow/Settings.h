@@ -12,9 +12,10 @@ class Settings
 {
 public:
 	Settings();
-	Settings(Ui::FullScreenWindowClass* ui, Engine* engine);
+	Settings(QMainWindow* mainWindow, Ui::FullScreenWindowClass* ui, Engine* engine);
 	~Settings();
 
+	QMainWindow* mainWindow;
 	Ui::FullScreenWindowClass* ui;
 	Engine* engine;
 

@@ -12,12 +12,12 @@ class Parameters
 {
 public:
 	Parameters();
+	Parameters(Engine* engine, QComboBox* combobox_Monitor);
 	~Parameters();
 
 	Engine* engine;
 
 	QComboBox* combobox_Monitor;
-	QCheckBox* c;
 
 	void on_comboBox_Monitor_currentIndexChanged(int index);
 	// Updates the content of the combobox

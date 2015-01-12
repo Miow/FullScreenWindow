@@ -6,13 +6,17 @@ Engine::Engine()
 	monList = std::shared_ptr<MonitorList>(new MonitorList);
 	monitor_updateList();
 	
-	proList = ProfileList();
-	Profile::initDefaults(&proList);
+	proList = new ProfileList();
+	Profile::initDefaults(proList);
+
+	winList = new std::vector<Window*>();
 }
 
 
 Engine::~Engine()
 {
+	delete proList;
+	delete winList;
 }
 
 

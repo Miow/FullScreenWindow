@@ -3,43 +3,55 @@
 
 
 FullScreenWindow::FullScreenWindow(QWidget *parent)
-	: QMainWindow(parent)
+	: QMainWindow(parent), ui(new Ui::FullScreenWindowClass)
 {
-	ui.setupUi(this);
-	engine = Engine();
-	settings = Settings(&ui, &engine);
+	ui->setupUi(this);
+	engine = new Engine();
+	settings = new Settings(this, ui, engine);
 	
 
-	preview = new Preview(ui.graphicsView_Preview);
+	preview = new Preview(ui->graphicsView_Preview);
 	preview->defaultView();
 
 
 	// CONNECTIONS
-	connect(ui.pushButton_toggleProfilesSettings, &QPushButton::clicked, this, &FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked);
+	connect(
+		ui->pushButton_toggleProfilesSettings,
+		&QPushButton::clicked,
+		this,
+		&FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked
+		);
 	// // WindowSelection
-	// Flemme de finir ça, la soltuion pour ajouter marche, reste juste a trouver le signal
-	// http://falsinsoft.blogspot.fr/2013/11/qlistwidget-and-item-edit-event.html
-	connect(ui.listView_WindowSelection, &QListWidget::currentTextChanged, this, &FullScreenWindow::on_listView_WindowSelection_currentTextChanged);
+	connect(
+		ui->listView_WindowSelection->itemDelegate(),
+		SIGNAL(closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)),
+		this,
+		SLOT(on_listView_WindowSelection_EditEnd(QWidget*, QAbstractItemDelegate::EndEditHint))
+		);
+	connect(
+		ui->listView_WindowSelection,
+		SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
+		this,
+		SLOT(on_listView_WindowSelection_currentRowChanged(const QModelIndex &, const QModelIndex &))
+		);
 	// // Settings
 	// // // Parameters
-	connect(ui.comboBox_Monitor, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &FullScreenWindow::on_comboBox_Monitor_currentIndexChanged);
+	connect(
+		ui->comboBox_Monitor,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(on_comboBox_Monitor_currentIndexChanged(int))
+		);
+	
 
-
-	// temp
-	QStringListModel* model = new QStringListModel(this);
-	QStringList list;
-	list << "ITEM 1" << "ITEM 2" << "ITEM 3" << "ITEM 4"  ;
-	model->setStringList(list);
-
-	ui.listView_WindowSelection->setModel(model);
-	// /temp
-
-	UpdateFromProfile(engine.proList[0]);
+	UpdateFromProfile((*engine->proList)[0]);
 }
 
 FullScreenWindow::~FullScreenWindow()
 {
-	
+	delete ui;
+	delete settings;
+	delete engine;
 }
 
 
@@ -47,8 +59,8 @@ void FullScreenWindow::UpdateFromProfile(const std::shared_ptr<Profile> pro)
 {
 
 	// Update monitor selection box
-	Monitor* mon = engine.monList->getMonitorByName(pro->screenName);
-	settings.parameters.update_comboBox_Monitor(mon);
+	Monitor* mon = engine->monList->getMonitorByName(pro->screenName);
+	settings->parameters.update_comboBox_Monitor(mon);
 	// TODO: UPDATE SELECTED MONITOR
 }
 
@@ -57,24 +69,28 @@ void FullScreenWindow::UpdateFromProfile(const std::shared_ptr<Profile> pro)
 // CONNECT
 void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 {
-	if (ui.groupBox_ProfileSettings->isHidden())
+	if (ui->groupBox_ProfileSettings->isHidden())
 	{
-		ui.groupBox_ProfileSettings->show();
+		ui->groupBox_ProfileSettings->show();
 	}
 	else
 	{
-		ui.groupBox_ProfileSettings->hide();
+		ui->groupBox_ProfileSettings->hide();
 	}
 }
 
 
 
 // // WindowSelection
-void FullScreenWindow::on_listView_WindowSelection_currentTextChanged(const QString & currentText)
+void FullScreenWindow::on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-
+	settings->windowSelection.on_listView_currentRowChanged(current, previous);
 }
-
+void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbstractItemDelegate::EndEditHint hint)
+{
+	QString NewValue = reinterpret_cast<QLineEdit*>(editor)->text();
+	settings->windowSelection.on_listView_EditEnd(NewValue);
+}
 
 
 // // Settings

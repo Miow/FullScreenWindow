@@ -62,12 +62,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_fullscreenwindow.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Profile.cpp">
       <Filter>Source Files\Settings</Filter>
     </ClCompile>
@@ -110,6 +104,12 @@
     <ClCompile Include="WindowSelection.cpp">
       <Filter>Source Files\UI\UiSettings</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_fullscreenwindow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_fullscreenwindow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_fullscreenwindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -126,9 +126,6 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="Profile.h">
       <Filter>Header Files\Settings</Filter>
     </ClInclude>
@@ -170,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="WindowSelection.h">
       <Filter>Header Files\UI\UiSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
