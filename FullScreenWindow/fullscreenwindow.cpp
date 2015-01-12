@@ -7,6 +7,14 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 	engine = new Engine();
+
+	// TESTING
+	Window win;
+	win.pro = &(*engine->proList)[0];
+	win.setName(L"VLC Media Player");
+	engine->winList->push_back(win);
+
+
 	settings = new Settings(this, ui, engine);
 	
 
@@ -43,8 +51,6 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		SLOT(on_comboBox_Monitor_currentIndexChanged(int))
 		);
 	
-
-	UpdateFromProfile((*engine->proList)[0]);
 }
 
 FullScreenWindow::~FullScreenWindow()
@@ -55,11 +61,11 @@ FullScreenWindow::~FullScreenWindow()
 }
 
 
-void FullScreenWindow::UpdateFromProfile(const std::shared_ptr<Profile> pro)
+void FullScreenWindow::UpdateFromProfile(const Profile pro)
 {
 
 	// Update monitor selection box
-	Monitor* mon = engine->monList->getMonitorByName(pro->screenName);
+	Monitor* mon = engine->monList->getMonitorByName(pro.screenName);
 	settings->parameters.update_comboBox_Monitor(mon);
 	// TODO: UPDATE SELECTED MONITOR
 }

@@ -11,7 +11,7 @@ Profile::~Profile()
 }
 
 
-void Profile::initDefaults(ProfileList* proList)
+void Profile::initDefaults(std::vector<Profile>* proList)
 {
 	Profile pro;
 
@@ -31,7 +31,7 @@ void Profile::initDefaults(ProfileList* proList)
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = false;
 
-	proList->push_back(std::unique_ptr<Profile>(new Profile(pro)));
+	proList->push_back(pro);
 
 
 	// FULLSCREEN
@@ -50,6 +50,6 @@ void Profile::initDefaults(ProfileList* proList)
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;
 
-	proList->push_back(std::unique_ptr<Profile>(new Profile(pro)));
+	proList->push_back(pro);
 
 }

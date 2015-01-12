@@ -26,7 +26,7 @@ private:
 	Engine* engine;
 	Settings* settings;
 
-	void UpdateFromProfile(const std::shared_ptr<Profile> pro);
+	void UpdateFromProfile(const Profile pro);
 
 
 private slots:

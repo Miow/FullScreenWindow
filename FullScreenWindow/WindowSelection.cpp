@@ -18,7 +18,7 @@ WindowSelection::WindowSelection()
 }
 WindowSelection::~WindowSelection()
 {
-	delete model;
+	//delete model;
 }
 
 
@@ -34,12 +34,12 @@ void WindowSelection::on_listView_EditEnd(QString newValue)
 	QModelIndex index = listView_WindowSelection->currentIndex();
 	int currentRow = index.row();
 
-	auto winList = engine->winList;
+	auto winList = *engine->winList;
 	// Just checking the index is not out of bound
-	if (currentRow < 0 && (uint)currentRow < winList->size())
+	if (currentRow < 0 && (uint)currentRow < winList.size())
 	{
-		LOG(info) << "Window \"" << (*winList)[currentRow]->getName() << "\" has been renamed to \"" << newValue.toStdString() << "\".";
-		(*winList)[currentRow]->setName(newValue);
+		LOG(info) << "Window \"" << winList[currentRow].getName() << "\" has been renamed to \"" << newValue.toStdString() << "\".";
+		winList[currentRow].setName(newValue);
 	}
 	else
 	{
@@ -54,9 +54,9 @@ void WindowSelection::updateList()
 	QStringList list;
 	auto winList = engine->winList;
 
-	for (auto it = winList->begin(); winList->begin() != winList->end(); it++)
+	for (auto it = winList->begin(); it != winList->end(); it++)
 	{
-		list.append((*it)->getQName());
+		list.append(it->getQName());
 	}
 
 	model->setStringList(list);

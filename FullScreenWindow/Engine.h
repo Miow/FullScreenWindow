@@ -17,8 +17,8 @@ public:
 	// Updates the monitor list
 	void monitor_updateList();
 
-	ProfileList* proList;
-	std::vector<Window*>* winList;
+	std::vector<Profile>* proList;
+	std::vector<Window>* winList;
 
 private:
 	

@@ -15,8 +15,6 @@ enum Anchor
 	BOTTOMRIGHT
 };
 
-class Profile;
-typedef std::vector<std::shared_ptr<Profile>> ProfileList;
 
 class Profile
 {
@@ -24,7 +22,7 @@ public:
 	Profile();
 	~Profile();
 
-	static void initDefaults(ProfileList* proList);
+	static void initDefaults(std::vector<Profile>* proList);
 	
 	// A profile is identified by its name which is unique
 	std::wstring name = L"";
