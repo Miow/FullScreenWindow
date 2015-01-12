@@ -200,6 +200,7 @@
     <ClCompile Include="Window.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WindowsEvent.cpp" />
     <ClCompile Include="WindowHandling.cpp" />
     <ClCompile Include="WindowSelection.cpp" />
   </ItemGroup>
@@ -257,6 +258,7 @@
     <ClInclude Include="Preview.h" />
     <ClInclude Include="Profile.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowsEvent.h" />
     <ClInclude Include="WindowHandling.h" />
     <ClInclude Include="WindowSelection.h" />
   </ItemGroup>

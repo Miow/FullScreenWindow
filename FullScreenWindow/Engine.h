@@ -5,6 +5,8 @@
 #include "MonitorList.h"
 #include "Profile.h"
 
+#include "WindowsEvent.h"
+
 #include <vector>
 
 class Engine
@@ -19,10 +21,6 @@ public:
 
 	std::vector<Profile>* proList;
 	std::vector<Window>* winList;
-
-private:
-	
-	
 
 };
 

@@ -113,6 +113,9 @@
     <ClCompile Include="GeneratedFiles\qrc_fullscreenwindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="WindowsEvent.cpp">
+      <Filter>Source Files\Wrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.ui">
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsEvent.h">
+      <Filter>Header Files\Wrapper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

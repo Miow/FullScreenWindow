@@ -19,8 +19,8 @@ public:
 	void setName(std::wstring newName);
 	void setName(QString newName);
 
-	std::wstring getName();
-	QString getQName();
+	const std::wstring getName();
+	const QString getQName();
 
 private:
 	std::wstring name;

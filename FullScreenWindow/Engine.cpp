@@ -10,6 +10,12 @@ Engine::Engine()
 	Profile::initDefaults(proList);
 
 	winList = new std::vector<Window>();
+
+	{ // Start the hook
+		Wrapper::WindowsEvent* instance = Wrapper::WindowsEvent::getInstance();
+		instance->init(this);
+		instance->enableHook();
+	}
 }
 
 

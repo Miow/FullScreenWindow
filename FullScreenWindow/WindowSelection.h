@@ -7,7 +7,6 @@
 
 #include "Engine.h"
 
-class FullScreenWindow;
 
 class WindowSelection
 {

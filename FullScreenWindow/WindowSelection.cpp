@@ -10,6 +10,7 @@ WindowSelection::WindowSelection(QMainWindow* mainWindow, Engine* engine, QListV
 	this->listView_WindowSelection = listView_WindowSelection;
 
 	model = new QStringListModel(mainWindow);
+	listView_WindowSelection->setModel(model);
 	updateList();
 }
 
@@ -61,5 +62,4 @@ void WindowSelection::updateList()
 
 	model->setStringList(list);
 
-	listView_WindowSelection->setModel(model);
 }
