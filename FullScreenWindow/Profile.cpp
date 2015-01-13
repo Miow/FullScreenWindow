@@ -27,7 +27,6 @@ void Profile::initDefaults(std::vector<Profile>* proList)
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
 
-	pro.screenName = PRIMARY;
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = false;
 
@@ -46,7 +45,6 @@ void Profile::initDefaults(std::vector<Profile>* proList)
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
 
-	pro.screenName = PRIMARY;
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;
 

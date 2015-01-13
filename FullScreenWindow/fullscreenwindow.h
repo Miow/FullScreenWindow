@@ -10,6 +10,7 @@
 
 #include "Preview.h"
 #include "Settings.h"
+#include "WindowsEvent.h"
 
 class FullScreenWindow : public QMainWindow
 {

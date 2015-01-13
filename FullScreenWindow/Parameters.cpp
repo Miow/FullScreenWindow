@@ -50,7 +50,7 @@ void Parameters::update_comboBox_Monitor()
 	combobox_Monitor->addItem(QPRIMARY);
 
 	// Fill in the combobox
-	for (auto it = engine->monList->monList.begin(); it != engine->monList->monList.end(); it++)
+	for (auto it = engine->monList->monList->begin(); it != engine->monList->monList->end(); it++)
 	{
 		QString name = QString::fromWCharArray((*it)->name.c_str());
 		if ((*it)->isPrimary)

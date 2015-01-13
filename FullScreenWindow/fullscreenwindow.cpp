@@ -10,10 +10,16 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 
 	// TESTING
 	Window win;
-	win.pro = &(*engine->proList)[0];
-	win.setName(L"VLC Media Player");
+	win.pro = &(*engine->proList)[1];
+	win.setName(L"VLC media player");
 	engine->winList->push_back(win);
+	////////////////////////////////////////
 
+	{ // Start the windows event hook
+		Wrapper::WindowsEvent* instance = Wrapper::WindowsEvent::getInstance();
+		instance->init(engine);
+		instance->enableHook();
+	}
 
 	settings = new Settings(this, ui, engine);
 	
@@ -66,7 +72,8 @@ void FullScreenWindow::UpdateFromProfile(const Profile pro)
 
 	// Update monitor selection box
 	Monitor* mon = engine->monList->getMonitorByName(pro.screenName);
-	settings->parameters.update_comboBox_Monitor(mon);
+	LES POINTEURS VERS UN MONITOR DANS LES PROFILE C'EST UNE MAUVAISE IDEE
+	settings->parameters.update_comboBox_Monitor(pro);
 	// TODO: UPDATE SELECTED MONITOR
 }
 

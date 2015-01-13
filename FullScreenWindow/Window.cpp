@@ -23,12 +23,12 @@ void Window::setName(QString newName)
 	name = newName.toStdWString();
 }
 
-std::wstring Window::getName()
+const std::wstring Window::getName()
 {
 	return name;
 }
 
-QString Window::getQName()
+const QString Window::getQName()
 {
 	return qname;
 }

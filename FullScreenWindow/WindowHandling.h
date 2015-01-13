@@ -1,35 +1,34 @@
 #pragma once
 #include "main.h"
 
+#include "Profile.h"
+
 #include <string>
 #include <windows.h>
 
 namespace Wrapper
 {
-
-	struct WindowHandle
-	{
-	public:
-		std::wstring name;
-		HWND hWnd;
-	};
-
-
 	namespace WindowHandling
 	{
 		// Returns a handle to a window currently open with the specified name
 		// Return values are 1 if the window was found, 0 otherwise
-		int getWindowByName(const std::wstring name, WindowHandle* wh);
+		HWND getWindowByName(const std::wstring name);
 
+		
 		// Move and resize the specified window to given coordonates and size
 		// X and Y are relative to the top left corner of the screen
-		void moveAndResizeWindow(WindowHandle wh, int newX, int newY, int newWidth, int newHeight);
+		void moveAndResizeWindow(HWND hWnd, int newX, int newY, int newWidth, int newHeight);
+		// Move and resize the window to the specifications of the profile
+		void moveAndResizeWindow(HWND hWnd, const Profile* pro);
 
-		// Toggle the titlebar and the border of a window, depending on the boolean
-		void toggleTitleBar(WindowHandle wh, bool toggle);
+		// remove the titlebar and the border of a window
+		void removeTitleBar(HWND hWnd);
 
 		// Contrain the cursor to stay within the bound of the window
-		void clipCursor(WindowHandle wh);
+		void clipCursor(HWND hWnd);
+
+		// Apply the options of the specified profile to the window
+		void applyProfile(HWND hWnd, Profile* pro);
 	};
 
 

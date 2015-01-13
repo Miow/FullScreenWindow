@@ -13,7 +13,7 @@ namespace Wrapper
 	namespace MonitorHandling
 	{
 		// Populate the MonitorList with the informations from every active monitor
-		void getMonitors(MonitorList* monList);
+		void getMonitors(std::vector<Monitor>* monList);
 
 
 		// Callback function for the EnumDisplayMonitors function

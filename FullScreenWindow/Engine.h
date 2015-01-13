@@ -5,8 +5,6 @@
 #include "MonitorList.h"
 #include "Profile.h"
 
-#include "WindowsEvent.h"
-
 #include <vector>
 
 class Engine

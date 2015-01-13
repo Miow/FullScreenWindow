@@ -16,13 +16,13 @@ public:
 	void update();
 
 	// Returns the monitor with the specified name
-	// if it is not found, returns the primary monitor
+	// if not found, returns the primary monitor
 	Monitor* getMonitorByName(const std::wstring name);
+	// Returns the pointer to the primary monitor
 	Monitor* getPrimaryMonitor();
 
-	void add(Monitor mon);
+	// ONLY FOR READ ACCESS, please
+	std::vector < Monitor >* monList;
 
-	// Made public only for random read access
-	std::vector <Monitor*> monList;
 
 };

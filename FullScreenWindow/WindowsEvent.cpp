@@ -54,18 +54,18 @@ namespace Wrapper
 		}
 	}
 
-	VOID CALLBACK WindowsEvent::WinEventProcCallback(HWINEVENTHOOK hWinEventHook, DWORD dwEvent, HWND hwnd, LONG idObject, LONG idChild, DWORD dwEventThread, DWORD dwmsEventTime)
+	VOID CALLBACK WindowsEvent::WinEventProcCallback(HWINEVENTHOOK hWinEventHook, DWORD dwEvent, HWND hWnd, LONG idObject, LONG idChild, DWORD dwEventThread, DWORD dwmsEventTime)
 	{
 		WindowsEvent* inst = getInstance();
-		GetWindowText(hwnd, inst->windowNameBuffer, inst->windowNameBufferSize);
+		GetWindowText(hWnd, inst->windowNameBuffer, inst->windowNameBufferSize);
 
 		auto winList = inst->engine->winList;
 		for (auto it = winList->begin(); it != winList->end(); it++)
 		{
 			if (wcscmp(inst->windowNameBuffer, it->getName().c_str()) == 0)
 			{
-				// Window has been found
-				WindowHandling::moveAndResizeWindow
+				WindowHandling::applyProfile(hWnd, it->pro);
+				break;
 			}
 		}
 			

@@ -39,9 +39,11 @@ public:
 	Anchor anchor = Anchor::TOPLEFT;
 
 	// Settings
-	std::wstring screenName = PRIMARY;
 	bool isCursorCliped = false;
 	bool isTitleBarHidden = false;
+
+	Monitor* monitor;
+
 
 };
 

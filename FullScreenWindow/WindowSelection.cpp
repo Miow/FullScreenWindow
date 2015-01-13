@@ -35,12 +35,12 @@ void WindowSelection::on_listView_EditEnd(QString newValue)
 	QModelIndex index = listView_WindowSelection->currentIndex();
 	int currentRow = index.row();
 
-	auto winList = *engine->winList;
+	std::vector<Window> winList = *engine->winList;
 	// Just checking the index is not out of bound
-	if (currentRow < 0 && (uint)currentRow < winList.size())
+	if (currentRow >= 0 && (uint)currentRow < engine->winList->size())
 	{
-		LOG(info) << "Window \"" << winList[currentRow].getName() << "\" has been renamed to \"" << newValue.toStdString() << "\".";
-		winList[currentRow].setName(newValue);
+		LOG(info) << "Window \"" << engine->winList->at(currentRow).getName() << "\" has been renamed to \"" << newValue.toStdString() << "\".";
+		engine->winList->at(currentRow).setName(newValue);
 	}
 	else
 	{

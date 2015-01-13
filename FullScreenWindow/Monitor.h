@@ -8,6 +8,7 @@
 class Monitor
 {
 public:
+	Monitor();
 	Monitor(
 		const std::wstring name,
 		bool isPrimary,

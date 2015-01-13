@@ -1,5 +1,9 @@
 #include "Monitor.h"
 
+Monitor::Monitor()
+{
+}
+
 Monitor::Monitor(const std::wstring name, bool isPrimary, int left, int top, int right, int bottom)
 {
 	this->name = name;

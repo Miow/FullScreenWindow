@@ -4,53 +4,114 @@
 namespace Wrapper
 {
 
-	int WindowHandling::getWindowByName(const std::wstring name, WindowHandle* wh)
+	HWND WindowHandling::getWindowByName(const std::wstring name)
 	{
-		wh->name = name;
-
 		HWND hWnd = FindWindow(NULL, name.c_str());
 
 		if (hWnd != NULL)
 		{
 			LOG(info) << "Window \"" << name.c_str() << "\" found.";
-			wh->hWnd = hWnd;
-			return 1;
+			return hWnd;
 		}
 		else
 		{
 			LOG(info) << "Window \"" << name.c_str() << "\" not found.";
-			return 0;
+			return NULL;
 		}
 		
 	}
 
-
-	void WindowHandling::moveAndResizeWindow(WindowHandle wh, int newX, int newY, int newWidth, int newHeight)
+	
+	void WindowHandling::moveAndResizeWindow(HWND hWnd, int newX, int newY, int newWidth, int newHeight)
 	{
-		if (wh.hWnd == NULL)
+		if (hWnd == NULL)
 		{
 			LOG(error) << "Attempting to resize a window without providing a valid handle.";
 			return;
 		}
-
+		
 
 		BOOL res = MoveWindow(
-			wh.hWnd,
+			hWnd,
 			newX,
 			newY,
 			newWidth,
 			newHeight,
-			true		// This boolean mean the function will send a message to repaint the window
+			TRUE		// This boolean mean the function will send a message to repaint the window
 			);
 
 		if (res)
 		{
-			LOG(info) << "Window \"" << wh.name.c_str() << "\" resized to " << newWidth << "x" << newHeight << " and moved to (" << newX << ", " << newY << ").";
+			LOG(info) << "Window resized to " << newWidth << "x" << newHeight << " and moved to (" << newX << ", " << newY << ").";
 		}
 		else
 		{
-			LOG(error) << "Unable to move and resize window \"" << wh.name.c_str() << "\" to " << newWidth << "x" << newHeight << " (" << newX << ", " << newY << ").";
+			LOG(error) << "Unable to move and resize window to " << newWidth << "x" << newHeight << " (" << newX << ", " << newY << ").";
 		}
+
+		//UpdateWindow(hWnd);
+		//RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+
 	}
 
+	void WindowHandling::moveAndResizeWindow(HWND hWnd, const Profile* pro)
+	{
+		// Calculating the dimentions depending on the screen
+
+		int absoluteX = pro->xpos;
+		int absoluteY = pro->ypos;
+
+		int absoluteWidth = pro->width;
+		int absoluteHeight = pro->height;
+
+		moveAndResizeWindow(hWnd, absoluteX, absoluteY, absoluteWidth, absoluteHeight);
+	}
+
+
+	void WindowHandling::removeTitleBar(HWND hWnd)
+	{
+		// Removig title bar and border
+		SetWindowLong(hWnd,
+			GWL_STYLE,
+			// Removing the border from the window's style
+			GetWindowLong(hWnd, GWL_STYLE) & ~(WS_BORDER | WS_DLGFRAME | WS_THICKFRAME)
+			);
+		SetWindowLong(hWnd,
+			GWL_EXSTYLE,
+			GetWindowLong(hWnd, GWL_EXSTYLE) & ~WS_EX_DLGMODALFRAME
+			);
+		
+	}
+
+	void clipCursor(HWND hWnd)
+	{
+		// Getting the rectagle from the window
+		RECT clippingRECT;
+		GetWindowRect(hWnd, &clippingRECT);
+
+		// Locking the cursor in the recangle
+		ClipCursor(&clippingRECT);
+
+		// Bring the window to the foreground and activates it
+		//SetActiveWindow(hWnd);
+	}
+
+
+	void WindowHandling::applyProfile(HWND hWnd, Profile* pro)
+	{
+		// Removing title bars
+		if (pro->isTitleBarHidden)
+		{
+			removeTitleBar(hWnd);
+		}
+
+		// Resizeing and moving
+		moveAndResizeWindow(hWnd, pro);
+
+		// Cliping the cursor
+		if (pro->isCursorCliped)
+		{
+			clipCursor(hWnd);
+		}
+	}
 }

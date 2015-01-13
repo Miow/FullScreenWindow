@@ -3,18 +3,19 @@
 
 MonitorList::MonitorList()
 {
-	monList = std::vector < Monitor* >();
+	monList = new std::vector < Monitor >();
 }
 
 MonitorList::~MonitorList()
 {
+	delete monList;
 }
 
 
 void MonitorList::update()
 {
-	monList.clear();
-	Wrapper::MonitorHandling::getMonitors(this);
+	monList->clear();
+	Wrapper::MonitorHandling::getMonitors(monList);
 }
 
 
@@ -26,11 +27,11 @@ Monitor* MonitorList::getMonitorByName(const std::wstring name)
 		return getPrimaryMonitor();
 	}
 
-	for (auto it = monList.begin(); it != monList.end(); it++)
+	for (auto it = monList->begin(); it != monList->end(); it++)
 	{
-		if ((*it)->name == name)
+		if (it->name == name)
 		{
-			return *it;
+			return &(*it);
 		}
 	}
 
@@ -40,19 +41,5 @@ Monitor* MonitorList::getMonitorByName(const std::wstring name)
 
 Monitor* MonitorList::getPrimaryMonitor()
 {
-	for (auto it = monList.begin(); it != monList.end(); it++)
-	{
-		if ((*it)->isPrimary)
-		{
-			return *it;
-		}
-	}
-
-	LOG(fatal) << "No primary monitor found while searching the list.";
-	return NULL;
-}
-
-void MonitorList::add(Monitor mon)
-{
-	monList.push_back(new Monitor(mon));
+	return &monList->at(0);
 }
