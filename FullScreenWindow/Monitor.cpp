@@ -12,6 +12,9 @@ Monitor::Monitor(const std::wstring name, bool isPrimary, int left, int top, int
 	this->top = top;
 	this->right = right;
 	this->bottom = bottom;
+
+	width = right - left;
+	height = bottom - top;
 }
 
 

@@ -49,18 +49,36 @@ Preview::~Preview()
 void Preview::defaultView()
 {
 	drawScreen(1920, 1080);
-	drawWindow(400, 200, 800, 600, 0, 1920, 1080);
+	drawWindow(400, 200, 800, 600, false, false);
 }
 
 void Preview::update(const Profile* pro)
 {
 	drawScreen(pro->mon->width, pro->mon->height);
-	drawWindow(pro->xpos, pro->ypos, pro->width, pro->height, pro->isTitleBarHidden, pro->mon->width, pro->mon->height);
+
+	int xpos, ypos, width, height;
+	if (pro->isSizeRelative)
+	{
+		width = pro->mon->width + pro->width;
+		height = pro->mon->height + pro->height;
+	}
+	else
+	{
+		width = pro->width;
+		height = pro->height;
+	}
+	xpos = pro->xpos;
+	ypos = pro->ypos;
+
+	drawWindow(xpos, ypos, width, height, pro->isTitleBarHidden, pro->isSizeRelative && pro->isTaskBarShown);
 }
 
 
 void Preview::drawScreen(double width, double height)
 {
+	screenWidth = width;
+	screenHeight = height;
+
 	double ratio = width / height;
 	// if the screen is wider than the preview
 	if (ratio > (gWidth / gHeight))
@@ -106,12 +124,17 @@ void Preview::drawScreen(double width, double height)
 	taskBarButton->setZValue(3);
 }
 
-void Preview::drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, double screenWidth, double screenHeight)
+void Preview::drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, bool isTaskBarShown)
 {
-	wX = xpos / screenWidth * sWidth;
-	wY = ypos / screenHeight * sHeight;
+	wX = xpos / screenWidth * sWidth + sX;
+	wY = ypos / screenHeight * sHeight + sY;
 	wWidth = width / screenWidth * sWidth;
 	wHeight = height / screenHeight * sHeight;
+
+	if (isTaskBarShown)
+	{
+		wHeight -= cTaskBarHeight;
+	}
 
 	if (isTitleBarHidden)
 	{

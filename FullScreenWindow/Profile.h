@@ -42,6 +42,7 @@ public:
 	// Settings
 	bool isCursorCliped = false;
 	bool isTitleBarHidden = false;
+	bool isTaskBarShown = false;
 
 	Monitor* mon;
 

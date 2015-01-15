@@ -57,14 +57,23 @@ namespace Wrapper
 	void WindowHandling::moveAndResizeWindow(HWND hWnd, const Profile* pro)
 	{
 		// Calculating the dimentions depending on the screen
+		
+		int x, y, width, height;
 
-		int absoluteX = pro->xpos;
-		int absoluteY = pro->ypos;
+		x = pro->xpos + pro->mon->left;
+		y = pro->ypos + pro->mon->top;
 
-		int absoluteWidth = pro->width;
-		int absoluteHeight = pro->height;
+		if (pro->isSizeRelative)
+		{
+			height = pro->height + pro->mon->height;
+		}
+		else
+		{
+			width = pro->width + pro->mon->width;
+			height = pro->height + pro->mon->height;
+		}
 
-		moveAndResizeWindow(hWnd, absoluteX, absoluteY, absoluteWidth, absoluteHeight);
+		moveAndResizeWindow(hWnd, x, y, width, height);
 	}
 
 

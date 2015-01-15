@@ -31,6 +31,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = false;
+	pro.isTaskBarShown = false;
 
 	proList->push_back(pro);
 
@@ -51,6 +52,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;
+	pro.isTaskBarShown = false;
 
 	proList->push_back(pro);
 

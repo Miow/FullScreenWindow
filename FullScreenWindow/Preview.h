@@ -17,9 +17,12 @@ public:
 	void defaultView();
 	void update(const Profile* pro);
 	void drawScreen(double width, double height);
-	void drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, double screenWidth, double screenHeight);
+	void drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, bool isTaskBarShown);
 
 private:
+	// Real life monitor size
+	double screenWidth = 1,
+		screenHeight = 1;
 	// Size of the preview, 0,0 is in the top left corner
 	double gX, gY, gWidth, gHeight;
 	double sX, sY, sWidth, sHeight;

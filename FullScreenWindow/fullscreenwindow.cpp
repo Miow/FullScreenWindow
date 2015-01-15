@@ -33,16 +33,16 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		);
 	// // WindowSelection
 	connect(
+		ui->listView_WindowSelection->selectionModel(),
+		SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+		this,
+		SLOT(on_listView_WindowSelection_currentRowChanged(const QModelIndex &, const QModelIndex &))
+		);
+	connect(
 		ui->listView_WindowSelection->itemDelegate(),
 		SIGNAL(closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)),
 		this,
 		SLOT(on_listView_WindowSelection_EditEnd(QWidget*, QAbstractItemDelegate::EndEditHint))
-		);
-	connect(
-		ui->listView_WindowSelection,
-		SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
-		this,
-		SLOT(on_listView_WindowSelection_currentRowChanged(const QModelIndex &, const QModelIndex &))
 		);
 	// // Settings
 	// // // Parameters
