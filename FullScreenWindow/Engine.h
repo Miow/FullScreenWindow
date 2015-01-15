@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "MonitorList.h"
 #include "Profile.h"
+#include "WindowsEvent.h"
 
 #include <vector>
 
@@ -13,7 +14,7 @@ public:
 	Engine();
 	~Engine();
 
-	std::shared_ptr<MonitorList> monList;
+	MonitorList* monList;
 	// Updates the monitor list
 	void monitor_updateList();
 

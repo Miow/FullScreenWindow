@@ -52,10 +52,10 @@ void Preview::defaultView()
 	drawWindow(400, 200, 800, 600, 0, 1920, 1080);
 }
 
-void Preview::update(const Monitor mon, const Profile pro)
+void Preview::update(const Profile* pro)
 {
-	drawScreen(mon.width, mon.height);
-	drawWindow(pro.xpos, pro.ypos, pro.width, pro.height, pro.isTitleBarHidden, mon.width, mon.height);
+	drawScreen(pro->mon->width, pro->mon->height);
+	drawWindow(pro->xpos, pro->ypos, pro->width, pro->height, pro->isTitleBarHidden, pro->mon->width, pro->mon->height);
 }
 
 

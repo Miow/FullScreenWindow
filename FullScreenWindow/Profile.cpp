@@ -11,7 +11,7 @@ Profile::~Profile()
 }
 
 
-void Profile::initDefaults(std::vector<Profile>* proList)
+void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 {
 	Profile pro;
 
@@ -26,6 +26,8 @@ void Profile::initDefaults(std::vector<Profile>* proList)
 	pro.xpos = 0;
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
+
+	pro.mon = monList->getPrimaryMonitor();
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = false;
@@ -44,6 +46,8 @@ void Profile::initDefaults(std::vector<Profile>* proList)
 	pro.xpos = 0;
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
+
+	pro.mon = monList->getPrimaryMonitor();
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;

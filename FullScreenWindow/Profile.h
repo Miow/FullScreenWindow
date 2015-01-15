@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include "Monitor.h"
+#include "MonitorList.h"
 
 #include <string>
 #include <vector>
@@ -22,7 +23,7 @@ public:
 	Profile();
 	~Profile();
 
-	static void initDefaults(std::vector<Profile>* proList);
+	static void initDefaults(std::vector<Profile>* proList, MonitorList* monList);
 	
 	// A profile is identified by its name which is unique
 	std::wstring name = L"";
@@ -42,7 +43,7 @@ public:
 	bool isCursorCliped = false;
 	bool isTitleBarHidden = false;
 
-	Monitor* monitor;
+	Monitor* mon;
 
 
 };

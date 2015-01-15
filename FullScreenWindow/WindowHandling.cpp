@@ -83,7 +83,7 @@ namespace Wrapper
 		
 	}
 
-	void clipCursor(HWND hWnd)
+	void WindowHandling::clipCursor(HWND hWnd)
 	{
 		// Getting the rectagle from the window
 		RECT clippingRECT;

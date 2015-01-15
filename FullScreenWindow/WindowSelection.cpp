@@ -24,9 +24,9 @@ WindowSelection::~WindowSelection()
 
 
 
-void WindowSelection::on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
+Window* WindowSelection::on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-	
+	return &engine->winList->at(current.row());
 }
 
 

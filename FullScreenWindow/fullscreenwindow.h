@@ -10,7 +10,6 @@
 
 #include "Preview.h"
 #include "Settings.h"
-#include "WindowsEvent.h"
 
 class FullScreenWindow : public QMainWindow
 {
@@ -27,8 +26,8 @@ private:
 	Engine* engine;
 	Settings* settings;
 
-	void UpdateFromProfile(const Profile pro);
-
+	void updateView(const Window* win);
+	void updateProfilesSettings(const Profile* pro);
 
 private slots:
 	void on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);

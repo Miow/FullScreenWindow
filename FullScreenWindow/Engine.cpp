@@ -3,20 +3,28 @@
 
 Engine::Engine()
 {
-	monList = std::shared_ptr<MonitorList>(new MonitorList);
+	monList = new MonitorList;
 	monitor_updateList();
 	
 	proList = new std::vector<Profile>();
-	Profile::initDefaults(proList);
+	Profile::initDefaults(proList, monList);
 
 	winList = new std::vector<Window>();
+
+	{ // Start the windows event hook
+		Wrapper::WindowsEvent* instance = Wrapper::WindowsEvent::getInstance();
+		instance->init(this);
+		instance->enableHook();
+	}
 }
 
 
 Engine::~Engine()
 {
-	delete proList;
+	Wrapper::WindowsEvent::getInstance()->disableHook();
 	delete winList;
+	delete proList;
+	delete monList;
 }
 
 
@@ -24,4 +32,7 @@ void Engine::monitor_updateList()
 {
 	monList->update();
 }
+
+
+
 

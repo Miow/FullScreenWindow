@@ -22,7 +22,8 @@ public:
 
 	void updateList();
 
-	void on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);
+	// Returns a pointer to the newly selected window
+	Window* on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);
 	void on_listView_EditEnd(QString newValue);
 
 private:

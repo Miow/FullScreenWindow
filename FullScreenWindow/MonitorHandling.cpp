@@ -7,7 +7,7 @@ namespace Wrapper
 	void MonitorHandling::getMonitors(std::vector<Monitor>* monList)
 	{
 		// Adding a placeholder for the primary monitor
-		monList->at(0) = Monitor();
+		monList->push_back(Monitor());
 
 		BOOL res = EnumDisplayMonitors(
 			NULL,

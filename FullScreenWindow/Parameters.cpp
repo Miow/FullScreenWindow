@@ -46,14 +46,11 @@ void Parameters::update_comboBox_Monitor()
 	// Updates the monitor list
 	engine->monitor_updateList();
 
-	// Add the primary monitor on top of the others
-	combobox_Monitor->addItem(QPRIMARY);
-
 	// Fill in the combobox
 	for (auto it = engine->monList->monList->begin(); it != engine->monList->monList->end(); it++)
 	{
-		QString name = QString::fromWCharArray((*it)->name.c_str());
-		if ((*it)->isPrimary)
+		QString name = QString::fromWCharArray(it->name.c_str());
+		if (it->isPrimary)
 		{
 			name = name + " (" + QPRIMARY + ")";
 		}
@@ -70,6 +67,7 @@ void Parameters::update_comboBox_Monitor(const Monitor* mon)
 	// If it is not found, default to primary
 	if (index == -1)
 	{
+		LOG(error) << "Monitor \"" << mon->name << "\" not found in the combobox, defaulting to primary.";
 		index = 0;
 	}
 	combobox_Monitor->setCurrentIndex(index);

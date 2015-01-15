@@ -13,13 +13,9 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	win.pro = &(*engine->proList)[1];
 	win.setName(L"VLC media player");
 	engine->winList->push_back(win);
+	win.setName(L"VLC media player2");
+	engine->winList->push_back(win);
 	////////////////////////////////////////
-
-	{ // Start the windows event hook
-		Wrapper::WindowsEvent* instance = Wrapper::WindowsEvent::getInstance();
-		instance->init(engine);
-		instance->enableHook();
-	}
 
 	settings = new Settings(this, ui, engine);
 	
@@ -67,14 +63,17 @@ FullScreenWindow::~FullScreenWindow()
 }
 
 
-void FullScreenWindow::UpdateFromProfile(const Profile pro)
+void FullScreenWindow::updateView(const Window* win)
 {
+	preview->update(win->pro);
+}
+
+void FullScreenWindow::updateProfilesSettings(const Profile* pro)
+{
+	// TODO: UPDATE SELECTED MONITOR
 
 	// Update monitor selection box
-	Monitor* mon = engine->monList->getMonitorByName(pro.screenName);
-	LES POINTEURS VERS UN MONITOR DANS LES PROFILE C'EST UNE MAUVAISE IDEE
-	settings->parameters.update_comboBox_Monitor(pro);
-	// TODO: UPDATE SELECTED MONITOR
+	settings->parameters.update_comboBox_Monitor(pro->mon);
 }
 
 
@@ -97,7 +96,8 @@ void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 // // WindowSelection
 void FullScreenWindow::on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-	settings->windowSelection.on_listView_currentRowChanged(current, previous);
+	Window* currentWindow = settings->windowSelection.on_listView_currentRowChanged(current, previous);
+	updateView(currentWindow);
 }
 void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbstractItemDelegate::EndEditHint hint)
 {
