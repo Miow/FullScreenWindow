@@ -46,11 +46,5 @@ Window* Settings::getCurrentWindow()
 
 Profile* Settings::getCurrentProfile()
 {
-	Window* currentWindow = getCurrentWindow();
-	if (currentWindow != NULL)
-	{
-		return currentWindow->pro;
-	}
-
-	return engine->getDefaultProfile();
+	return windowSelection.getCurrentProfile();
 }

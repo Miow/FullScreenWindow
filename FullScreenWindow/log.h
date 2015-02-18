@@ -31,4 +31,4 @@ void initLog();
 
 using namespace logging::trivial;
 
-#define LOG(severity) BOOST_LOG_SEV(src::severity_logger< severity_level >(), severity) << "(" << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ") " 
+#define LOG(severity) BOOST_LOG_SEV(src::severity_logger< severity_level >(), severity) << "(" << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ") "

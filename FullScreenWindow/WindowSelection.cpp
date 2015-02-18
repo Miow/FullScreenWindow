@@ -14,7 +14,8 @@ WindowSelection::WindowSelection(QMainWindow* mainWindow, Engine* engine, QListV
 
 	model = new QStringListModel(mainWindow);
 	listView_WindowSelection->setModel(model);
-	updateList();
+
+	currentProfile = engine->getDefaultProfile();
 }
 
 WindowSelection::WindowSelection()
@@ -27,12 +28,20 @@ WindowSelection::~WindowSelection()
 
 
 
-Window* WindowSelection::on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
+void WindowSelection::on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-	Window* currentWindow = &(engine->winList->at(current.row()));
+	currentWindow = NULL;
+	try
+	{
+		currentWindow = &(engine->winList->at(current.row()));
+		currentProfile = currentWindow->pro;
+	}
+	catch (const std::out_of_range& oor)
+	{
+		LOG(fatal) << "Unable to find the selected window, index out of bound: " << oor.what();
+	}
 
-
-	return currentWindow;
+	comboBox_ProfileSelection_update();
 }
 
 
@@ -69,18 +78,12 @@ void WindowSelection::updateList()
 
 Window* WindowSelection::getCurrentWindow()
 {
-	QModelIndex index = listView_WindowSelection->currentIndex();
-	Window* currentWindow = NULL;
-	try
-	{
-		currentWindow = &(engine->winList->at(index.row()));
-	}
-	catch (const std::out_of_range& oor)
-	{
-		LOG(fatal) << "Unable to find the selected window, index out of bound: " << oor.what();
-	}
-
 	return currentWindow;
+}
+
+Profile* WindowSelection::getCurrentProfile()
+{
+	return currentProfile;
 }
 
 
@@ -101,13 +104,23 @@ void WindowSelection::on_comboBox_ProfileSelection_currentIndexChanged(int index
 	if (currentWindow != NULL && newProfile != NULL)
 	{
 		currentWindow->pro = newProfile;
+		currentProfile = newProfile;
 	}
 
 }
 
 void WindowSelection::comboBox_ProfileSelection_update()
 {
-	QString lastSelectedProfile = comboBox_ProfileSelection_getSelected();
+	QString lastSelectedProfile;
+	if(currentWindow != NULL)
+	{
+		lastSelectedProfile = currentWindow->pro->getQName();
+	}
+	else
+	{
+		lastSelectedProfile = comboBox_ProfileSelection_getSelected();
+	}
+	
 
 	// Clears the content of the list
 	int nbItems = comboBox_ProfileSelection->count();
@@ -128,17 +141,11 @@ void WindowSelection::comboBox_ProfileSelection_update()
 	}
 
 
-	Window* currentWindow = getCurrentWindow();
-	if (currentWindow != NULL)
-	{
-		comboBox_ProfileSelection_setSelected(currentWindow->pro);
-	}
-	else
-	{
-		comboBox_ProfileSelection_setSelected(lastSelectedProfile);
-	}
 	
+	comboBox_ProfileSelection_setSelected(lastSelectedProfile);
 }
+
+
 
 QString WindowSelection::comboBox_ProfileSelection_getSelected()
 {
@@ -158,7 +165,7 @@ void WindowSelection::comboBox_ProfileSelection_setSelected(QString profileName)
 	// If it is not found, default to primary
 	if (index == -1)
 	{
-		LOG(error) << "Monitor \"" << profileName.toStdString() << "\" not found in the combobox, defaulting to primary.";
+		LOG(error) << "Profile \"" << profileName.toStdString() << "\" not found in the combobox, selecting default.";
 		index = 0;
 	}
 	comboBox_ProfileSelection->setCurrentIndex(index);

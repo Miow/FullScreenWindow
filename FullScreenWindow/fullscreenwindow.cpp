@@ -34,7 +34,6 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		SLOT(on_listView_WindowSelection_EditEnd(QWidget*, QAbstractItemDelegate::EndEditHint))
 		);
-	// // WindowSettings
 	connect(
 		ui->comboBox_ProfileSelection,
 		SIGNAL(currentIndexChanged(int)),
@@ -72,6 +71,7 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	////////////////////////////////////////
 
 	updateAll();
+	preview->defaultView();
 }
 
 FullScreenWindow::~FullScreenWindow()
@@ -90,9 +90,9 @@ void FullScreenWindow::updateAll()
 	settings->parameters.update_comboBox_Monitor();
 }
 
-void FullScreenWindow::updateView(const Window* win)
+void FullScreenWindow::updateView()
 {
-	preview->update(win->pro);
+	preview->update(settings->getCurrentProfile());
 
 }
 
@@ -125,31 +125,32 @@ void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 // // WindowSelection
 void FullScreenWindow::on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-	Window* currentWindow = settings->windowSelection.on_listView_currentRowChanged(current, previous);
-	updateView(currentWindow);
+	settings->windowSelection.on_listView_currentRowChanged(current, previous);
+	updateView();
 }
 void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbstractItemDelegate::EndEditHint hint)
 {
 	QString NewValue = reinterpret_cast<QLineEdit*>(editor)->text();
 	settings->windowSelection.on_listView_EditEnd(NewValue);
 }
-
-// // WindowSettings
 void FullScreenWindow::on_comboBox_ProfileSelection_currentIndexChanged(int index)
 {
 	settings->windowSelection.on_comboBox_ProfileSelection_currentIndexChanged(index);
+	updateView();
 }
 
 // // Settings
 void FullScreenWindow::on_comboBox_ProfileSelection_2_currentIndexChanged(int index)
 {
 	settings->profileSelector.on_comboBox_ProfileSelection_2_currentIndexChanged(index);
+	updateView();
 }
 
 // // // Parameters
 void FullScreenWindow::on_comboBox_Monitor_currentIndexChanged(int index)
 {
 	settings->parameters.on_comboBox_Monitor_currentIndexChanged(index);
+	updateView();
 }
 
 

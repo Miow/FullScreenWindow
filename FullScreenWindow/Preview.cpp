@@ -38,6 +38,22 @@ Preview::Preview(QGraphicsView* previewWidget)
 	
 	invisiblePen = QPen(Qt::transparent);
 	invisiblePen.setWidth(0);
+
+	border = scene->addRect(0, 0, 0, 0, invisiblePen, borderBrush);
+	screen = scene->addRect(0, 0, 0, 0, invisiblePen, screenBrush);
+	taskBar = scene->addRect(0, 0, 0, 0, invisiblePen, taskBarBrush);
+	taskBarButton = scene->addRect(0, 0, 0, 0, invisiblePen, taskBarButtonBrush);
+	windowTitleBar = scene->addRect(0, 0, 0, 0, invisiblePen, windowTitleBarBrush);
+	windowBackground = scene->addRect(0, 0, 0, 0, invisiblePen, windowBackgroundBrush);
+	windowContent = scene->addRect(0, 0, 0, 0, invisiblePen, windowContentBrush);
+	
+	border->setZValue(1);
+	screen->setZValue(2);
+	taskBar->setZValue(3);
+	taskBarButton->setZValue(4);
+	windowTitleBar->setZValue(10);
+	windowBackground->setZValue(11);
+	windowContent->setZValue(12);
 }
 
 
@@ -99,8 +115,7 @@ void Preview::drawScreen(double width, double height)
 
 
 	// Drawing the border
-	border = scene->addRect(sX, sY, sWidth, sHeight, invisiblePen, borderBrush);
-	border->setZValue(1);
+	border->setRect(sX, sY, sWidth, sHeight);
 
 	// Updating screen rectangle with border
 	sX = sX + cBorderWidth;
@@ -109,19 +124,17 @@ void Preview::drawScreen(double width, double height)
 	sHeight = sHeight - cBorderWidth * 2;
 
 	// Drawing the screen
-	screen = scene->addRect(sX, sY, sWidth, sHeight, invisiblePen, screenBrush);
-	screen->setZValue(2);
+	screen->setRect(sX, sY, sWidth, sHeight);
 
 	// Taskbar
-	taskBar = scene->addRect(sX, sY + sHeight - cTaskBarHeight, sWidth, cTaskBarHeight, invisiblePen, taskBarBrush);
-	taskBar->setZValue(3);
-	taskBarButton = scene->addRect(
+	taskBar->setRect(sX, sY + sHeight - cTaskBarHeight, sWidth, cTaskBarHeight);
+
+	taskBarButton->setRect(
 		sX + (cTaskBarHeight - cTaskBarButtonSize) / 2,
 		sY + sHeight - cTaskBarHeight + (cTaskBarHeight - cTaskBarButtonSize) / 2,
 		cTaskBarButtonSize,
-		cTaskBarButtonSize,
-		invisiblePen, taskBarButtonBrush);
-	taskBarButton->setZValue(3);
+		cTaskBarButtonSize
+		);
 }
 
 void Preview::drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, bool isTaskBarShown)
@@ -138,44 +151,38 @@ void Preview::drawWindow(double xpos, double ypos, double width, double height, 
 
 	if (isTitleBarHidden)
 	{
-		windowBackground = scene->addRect(
+		windowBackground->setRect(
 			wX,
 			wY,
 			wWidth,
-			wHeight,
-			invisiblePen, windowBackgroundBrush);
-		windowBackground->setZValue(11);
+			wHeight
+			);
 
-		windowContent = scene->addRect(
+		windowContent->setRect(
 			wX,
 			wY + cWindowMenuBarHeight,
 			wWidth,
-			wHeight - cWindowMenuBarHeight,
-			invisiblePen, windowContentBrush);
-		windowContent->setZValue(12);
+			wHeight - cWindowMenuBarHeight
+			);
 
-		windowTitleBar->setZValue(0);
 	}
 	else
 	{
-		windowTitleBar = scene->addRect(wX, wY, wWidth, wHeight, invisiblePen, windowTitleBarBrush);
-		windowTitleBar->setZValue(10);
+		windowTitleBar->setRect(wX, wY, wWidth, wHeight);
 
-		windowBackground = scene->addRect(
+		windowBackground->setRect(
 			wX + cWindowBorderWidth,
 			wY + cWindowTitleBarHeight,
 			wWidth - cWindowBorderWidth * 2,
-			wHeight - cWindowTitleBarHeight - cWindowBorderWidth,
-			invisiblePen, windowBackgroundBrush);
-		windowBackground->setZValue(11); 
+			wHeight - cWindowTitleBarHeight - cWindowBorderWidth
+			);
 		
-		windowContent = scene->addRect(
+		windowContent->setRect(
 			wX + cWindowBorderWidth,
 			wY + cWindowTitleBarHeight + cWindowMenuBarHeight,
 			wWidth - cWindowBorderWidth * 2,
-			wHeight - cWindowBorderWidth - cWindowTitleBarHeight - cWindowMenuBarHeight,
-			invisiblePen, windowContentBrush);
-		windowContent->setZValue(12);
+			wHeight - cWindowBorderWidth - cWindowTitleBarHeight - cWindowMenuBarHeight
+			);
 		
 	}
 	

@@ -28,12 +28,13 @@ public:
 	// Updates the list with all the windows recognized by the program
 	void updateList();
 	// Returns a pointer to the newly selected window
-	Window* on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);
+	void on_listView_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);
 	// Called when a renaming action is terminated
 	void on_listView_EditEnd(QString newValue);
+
 	// Returns a pointer to the currently selected window
 	Window* getCurrentWindow();
-
+	Profile* getCurrentProfile();
 
 
 	QComboBox* comboBox_ProfileSelection;
@@ -54,5 +55,7 @@ public:
 
 private:
 	QStringListModel* model;
+	Window* currentWindow = NULL;
+	Profile* currentProfile = NULL;
 };
 

@@ -27,7 +27,7 @@ private:
 	Settings* settings;
 
 	void updateAll();
-	void updateView(const Window* win);
+	void updateView();
 	void updateProfilesSettings(const Profile* pro);
 
 private slots:
