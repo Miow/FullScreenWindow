@@ -1,2 +1,0 @@
-1 | [ 2015-01-15 14:25:43]: <info> (MonitorHandling.cpp:55:Wrapper::MonitorHandling::MonitorEnumProc) PRIMARY Monitor "\\.\DISPLAY1" found, coordonates: [(0, 0), (1920, 1080)].
-2 | [ 2015-01-15 14:25:43]: <info> (MonitorHandling.cpp:55:Wrapper::MonitorHandling::MonitorEnumProc) Monitor "\\.\DISPLAY2" found, coordonates: [(-1680, 0), (0, 1050)].

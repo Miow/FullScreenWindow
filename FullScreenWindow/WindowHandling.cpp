@@ -65,12 +65,13 @@ namespace Wrapper
 
 		if (pro->isSizeRelative)
 		{
+			width = pro->width + pro->mon->width;
 			height = pro->height + pro->mon->height;
 		}
 		else
 		{
-			width = pro->width + pro->mon->width;
-			height = pro->height + pro->mon->height;
+			width = pro->width;
+			height = pro->height;
 		}
 
 		moveAndResizeWindow(hWnd, x, y, width, height);

@@ -10,6 +10,27 @@ Profile::~Profile()
 {
 }
 
+void Profile::setName(std::wstring newName)
+{
+	name = newName;
+	qname = QString::fromWCharArray(newName.c_str());
+}
+
+void Profile::setName(QString newName)
+{
+	qname = newName;
+	name = newName.toStdWString();
+}
+
+const std::wstring Profile::getName()
+{
+	return name;
+}
+
+const QString Profile::getQName()
+{
+	return qname;
+}
 
 void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 {
@@ -17,7 +38,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	// DISABLED
 	pro = Profile();
-	pro.name = L"Disabled";
+	pro.setName(L"Disabled");
 
 	pro.width = 0;
 	pro.height = 0;
@@ -38,7 +59,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	// FULLSCREEN
 	pro = Profile();
-	pro.name = L"Fullscreen";
+	pro.setName(L"Fullscreen");
 
 	pro.width = 0;
 	pro.height = 0;

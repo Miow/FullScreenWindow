@@ -8,17 +8,7 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	ui->setupUi(this);
 	engine = new Engine();
 
-	// TESTING
-	Window win;
-	win.pro = &(*engine->proList)[1];
-	win.setName(L"VLC media player");
-	engine->winList->push_back(win);
-	win.setName(L"VLC media player2");
-	engine->winList->push_back(win);
-	////////////////////////////////////////
-
 	settings = new Settings(this, ui, engine);
-	
 
 	preview = new Preview(ui->graphicsView_Preview);
 	preview->defaultView();
@@ -44,7 +34,20 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		SLOT(on_listView_WindowSelection_EditEnd(QWidget*, QAbstractItemDelegate::EndEditHint))
 		);
+	// // WindowSettings
+	connect(
+		ui->comboBox_ProfileSelection,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(on_comboBox_ProfileSelection_currentIndexChanged(int))
+		);
 	// // Settings
+	connect(
+		ui->comboBox_ProfileSelection_2,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(on_comboBox_ProfileSelection_2_currentIndexChanged(int))
+		);
 	// // // Parameters
 	connect(
 		ui->comboBox_Monitor,
@@ -53,6 +56,22 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		SLOT(on_comboBox_Monitor_currentIndexChanged(int))
 		);
 	
+
+	// EVENT FILTER
+	ui->comboBox_Monitor->view()->installEventFilter(this);
+	ui->comboBox_ProfileSelection->view()->installEventFilter(this);
+
+	// TESTING
+	Window win;
+	win.pro = &(*engine->proList)[1];
+	win.setName(L"VLC media player");
+	engine->winList->push_back(win);
+	win.setName(L"VLC media player2");
+	engine->winList->push_back(win);
+
+	////////////////////////////////////////
+
+	updateAll();
 }
 
 FullScreenWindow::~FullScreenWindow()
@@ -63,13 +82,23 @@ FullScreenWindow::~FullScreenWindow()
 }
 
 
+void FullScreenWindow::updateAll()
+{
+
+	settings->windowSelection.updateList();
+	settings->windowSelection.comboBox_ProfileSelection_update();
+	settings->parameters.update_comboBox_Monitor();
+}
+
 void FullScreenWindow::updateView(const Window* win)
 {
 	preview->update(win->pro);
+
 }
 
 void FullScreenWindow::updateProfilesSettings(const Profile* pro)
 {
+	//settings->parameters.update_comboBox_Monitor();
 	// TODO: UPDATE SELECTED MONITOR
 
 	// Update monitor selection box
@@ -105,11 +134,59 @@ void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbs
 	settings->windowSelection.on_listView_EditEnd(NewValue);
 }
 
+// // WindowSettings
+void FullScreenWindow::on_comboBox_ProfileSelection_currentIndexChanged(int index)
+{
+	settings->windowSelection.on_comboBox_ProfileSelection_currentIndexChanged(index);
+}
 
 // // Settings
-// // // Parameters
+void FullScreenWindow::on_comboBox_ProfileSelection_2_currentIndexChanged(int index)
+{
+	settings->profileSelector.on_comboBox_ProfileSelection_2_currentIndexChanged(index);
+}
 
+// // // Parameters
 void FullScreenWindow::on_comboBox_Monitor_currentIndexChanged(int index)
 {
+	settings->parameters.on_comboBox_Monitor_currentIndexChanged(index);
+}
 
+
+
+
+
+
+
+
+
+bool FullScreenWindow::eventFilter(QObject *target, QEvent *event)
+{ // The return value is true if we interecept the event
+
+	if (target == ui->comboBox_Monitor->view())
+	{
+		switch (event->type())
+		{
+		case QEvent::Show:
+			// The ComboBox has been shown and needs to be updated
+			settings->parameters.update_comboBox_Monitor();
+			return false;
+		default:
+			break;
+		};
+	}
+	else if (target == ui->comboBox_ProfileSelection->view())
+	{
+		switch (event->type())
+		{
+		case QEvent::Show:
+			// The ComboBox has been shown and needs to be updated
+			settings->windowSelection.comboBox_ProfileSelection_update();
+			return false;
+		default:
+			break;
+		};
+	}
+
+	return false;
 }

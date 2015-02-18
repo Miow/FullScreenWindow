@@ -34,5 +34,9 @@ void Engine::monitor_updateList()
 }
 
 
+Profile* Engine::getDefaultProfile()
+{
+	return &(proList->at(0));
+}
 
 

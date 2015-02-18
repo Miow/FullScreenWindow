@@ -26,6 +26,7 @@ private:
 	Engine* engine;
 	Settings* settings;
 
+	void updateAll();
 	void updateView(const Window* win);
 	void updateProfilesSettings(const Profile* pro);
 
@@ -35,7 +36,13 @@ private slots:
 
 
 	void on_pushButton_toggleProfilesSettings_clicked();
+	void on_comboBox_ProfileSelection_currentIndexChanged(int index);
+	void on_comboBox_ProfileSelection_2_currentIndexChanged(int index);
 	void on_comboBox_Monitor_currentIndexChanged(int index);
+
+protected:
+	bool eventFilter(QObject *target, QEvent *event);
+
 };
 
 #endif // FULLSCREENWINDOW_H

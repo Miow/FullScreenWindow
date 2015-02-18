@@ -8,13 +8,25 @@ Settings::Settings(QMainWindow* mainWindow, Ui::FullScreenWindowClass* ui, Engin
 	this->ui = ui;
 	this->engine = engine;
 
-	parameters = Parameters(engine, ui->comboBox_Monitor);
-	windowSelection = WindowSelection(mainWindow, engine, ui->listView_WindowSelection);
+	windowSelection = WindowSelection(
+		mainWindow,
+		engine,
+		ui->listView_WindowSelection,
+		ui->comboBox_ProfileSelection,
+		ui->lineEdit_ProcessName
+		);
+	profileSelector = ProfileSelector(
+		engine,
+		ui->comboBox_ProfileSelection_2,
+		ui->pushButton_Profile_Save,
+		ui->pushButton_Profile_Delete,
+		ui->pushButton_Profile_Duplicate
+		); 
+	parameters = Parameters(
+		engine,
+		ui->comboBox_Monitor
+		);
 
-	comboBox_ProfileSelection = ui->comboBox_ProfileSelection_2;
-	pushButton_Profile_Save = ui->pushButton_Profile_Save;
-	pushButton_Profile_Delete = ui->pushButton_Profile_Delete;
-	pushButton_Profile_Duplicate = ui->pushButton_Profile_Duplicate;
 }
 
 Settings::Settings()
@@ -27,43 +39,18 @@ Settings::~Settings()
 }
 
 
-void on_comboBox_Monitor_currentIndexChanged(int index)
+Window* Settings::getCurrentWindow()
 {
-	Profile* currentPro = engine->proList->at(index);
-	ici faut check et tout et griser les boutons qui servent a rien
+	return windowSelection.getCurrentWindow();
 }
-/*
-void Settings::update_comboBox_ProfileSelection();
-{
 
-}
-*/
 Profile* Settings::getCurrentProfile()
 {
-	int index = comboBox_ProfileSelection->currentIndex();
-
-	if (index < 0 || index > engine->proList->size())
+	Window* currentWindow = getCurrentWindow();
+	if (currentWindow != NULL)
 	{
-		return NULL;
+		return currentWindow->pro;
 	}
-	else
-	{
-		return &engine->proList->at(index);
-	}
-	
-}
 
-void Settings::saveCurrentProfile()
-{
-
-}
-
-void Settings::saveCurrentProfileAs(QString newName)
-{
-
-}
-
-void Settings::deleteCurrentProfile()
-{
-
+	return engine->getDefaultProfile();
 }

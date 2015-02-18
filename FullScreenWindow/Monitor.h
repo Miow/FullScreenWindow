@@ -1,9 +1,11 @@
 #pragma once
 #include "main.h"
 
+#include <qstring.h>
 #include <string>
 
 #define PRIMARY L"Primary"
+static const QString QPRIMARY = QString::fromWCharArray(PRIMARY);
 
 class Monitor
 {
@@ -19,7 +21,6 @@ public:
 		);
 	~Monitor();
 
-	std::wstring name;
 
 	bool isPrimary;
 
@@ -30,4 +31,14 @@ public:
 	int top;
 	int right;
 	int bottom;
+
+	void setName(std::wstring newName);
+	void setName(QString newName);
+
+	std::wstring getName();
+	QString getQName();
+
+private:
+	std::wstring name;
+	QString qname;
 };

@@ -6,6 +6,7 @@
 #pragma warning(disable:4714)
 #pragma warning(disable:4512)
 #pragma warning(disable:4100)
+#pragma warning(disable:4239)
 
 #define BOOST_ALL_DYN_LINK
 #include <boost/log/trivial.hpp>
@@ -30,6 +31,4 @@ void initLog();
 
 using namespace logging::trivial;
 
-#define LOG(severity) \
-	src::severity_logger< severity_level > lg; \
-    BOOST_LOG_SEV(lg, severity) << "(" << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ") "
+#define LOG(severity) BOOST_LOG_SEV(src::severity_logger< severity_level >(), severity) << "(" << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ") " 

@@ -4,6 +4,7 @@
 #include "Monitor.h"
 #include "MonitorList.h"
 
+#include <qstring.h>
 #include <string>
 #include <vector>
 
@@ -25,8 +26,11 @@ public:
 
 	static void initDefaults(std::vector<Profile>* proList, MonitorList* monList);
 	
-	// A profile is identified by its name which is unique
-	std::wstring name = L"";
+	// Name
+	void setName(std::wstring newName);
+	void setName(QString newName);
+	const std::wstring getName();
+	const QString getQName();
 
 	// Size
 	int width = 0;
@@ -46,7 +50,10 @@ public:
 
 	Monitor* mon;
 
-
+private:
+	// A profile is identified by its name which is unique
+	std::wstring name = L"";
+	QString qname;
 };
 
 

@@ -6,6 +6,7 @@
 
 #include <vector>
 
+
 class MonitorList
 {
 public:
@@ -18,6 +19,7 @@ public:
 	// Returns the monitor with the specified name
 	// if not found, returns the primary monitor
 	Monitor* getMonitorByName(const std::wstring name);
+	Monitor* getMonitorByName(QString name);
 	// Returns the pointer to the primary monitor
 	Monitor* getPrimaryMonitor();
 

@@ -18,7 +18,11 @@ public:
 	// Updates the monitor list
 	void monitor_updateList();
 
+
 	std::vector<Profile>* proList;
+	// Returns the default profile	
+	Profile* getDefaultProfile();
+
 	std::vector<Window>* winList;
 
 };

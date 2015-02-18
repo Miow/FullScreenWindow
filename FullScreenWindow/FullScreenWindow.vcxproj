@@ -193,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Parameters.cpp" />
+    <ClCompile Include="ProfileSelector.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -250,6 +251,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="MonitorList.h" />
     <ClInclude Include="Parameters.h" />
+    <ClInclude Include="ProfileSelector.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="log.h" />

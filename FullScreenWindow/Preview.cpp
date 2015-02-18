@@ -138,9 +138,22 @@ void Preview::drawWindow(double xpos, double ypos, double width, double height, 
 
 	if (isTitleBarHidden)
 	{
-		windowContent = scene->addRect(wX, wY, wWidth, wHeight, invisiblePen, windowContentBrush);
+		windowBackground = scene->addRect(
+			wX,
+			wY,
+			wWidth,
+			wHeight,
+			invisiblePen, windowBackgroundBrush);
+		windowBackground->setZValue(11);
+
+		windowContent = scene->addRect(
+			wX,
+			wY + cWindowMenuBarHeight,
+			wWidth,
+			wHeight - cWindowMenuBarHeight,
+			invisiblePen, windowContentBrush);
 		windowContent->setZValue(12);
-		windowBackground->setZValue(0);
+
 		windowTitleBar->setZValue(0);
 	}
 	else
@@ -150,7 +163,8 @@ void Preview::drawWindow(double xpos, double ypos, double width, double height, 
 
 		windowBackground = scene->addRect(
 			wX + cWindowBorderWidth,
-			wY + cWindowTitleBarHeight, wWidth - cWindowBorderWidth * 2,
+			wY + cWindowTitleBarHeight,
+			wWidth - cWindowBorderWidth * 2,
 			wHeight - cWindowTitleBarHeight - cWindowBorderWidth,
 			invisiblePen, windowBackgroundBrush);
 		windowBackground->setZValue(11); 

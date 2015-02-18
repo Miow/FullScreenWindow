@@ -19,6 +19,24 @@ void MonitorList::update()
 }
 
 
+Monitor* MonitorList::getMonitorByName(const QString name)
+{
+	if (name == QPRIMARY)
+	{
+		return getPrimaryMonitor();
+	}
+
+	for (auto it = monList->begin(); it != monList->end(); it++)
+	{
+		if (it->getQName() == name)
+		{
+			return &(*it);
+		}
+	}
+
+	LOG(error) << "Monitor \"" << name.toStdWString() << "\" not found, defaulting to primary.";
+	return getPrimaryMonitor();
+}
 
 Monitor* MonitorList::getMonitorByName(const std::wstring name)
 {
@@ -29,7 +47,7 @@ Monitor* MonitorList::getMonitorByName(const std::wstring name)
 
 	for (auto it = monList->begin(); it != monList->end(); it++)
 	{
-		if (it->name == name)
+		if (it->getName() == name)
 		{
 			return &(*it);
 		}
