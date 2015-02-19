@@ -2,12 +2,22 @@
 #include "WindowSelection.h"
 
 
-WindowSelection::WindowSelection(QMainWindow* mainWindow, Engine* engine, QListView* listView_WindowSelection, QComboBox* comboBox_ProfileSelection, QLineEdit* lineEdit_ProcessName)
+WindowSelection::WindowSelection(QMainWindow* mainWindow, Engine* engine,
+	QListView* listView_WindowSelection,
+	QPushButton* pushButton_wAdd,
+	QPushButton* pushButton_wRemove,
+	QPushButton* pushButton_wRename,
+	QComboBox* comboBox_ProfileSelection,
+	QLineEdit* lineEdit_ProcessName
+	)
 {
 	this->mainWindow = mainWindow;
 	this->engine = engine;
 
 	this->listView_WindowSelection = listView_WindowSelection;
+	this->pushButton_wAdd = pushButton_wAdd;
+	this->pushButton_wRemove = pushButton_wRemove;
+	this->pushButton_wRename = pushButton_wRename;
 	this->comboBox_ProfileSelection = comboBox_ProfileSelection;
 	this->lineEdit_ProcessName = lineEdit_ProcessName;
 
@@ -25,6 +35,21 @@ WindowSelection::~WindowSelection()
 {
 	//delete model;
 }
+
+
+
+
+Window* WindowSelection::getCurrentWindow()
+{
+	return currentWindow;
+}
+
+Profile* WindowSelection::getCurrentProfile()
+{
+	return currentProfile;
+}
+
+
 
 
 
@@ -76,15 +101,38 @@ void WindowSelection::updateList()
 
 }
 
-Window* WindowSelection::getCurrentWindow()
+
+
+
+
+
+void WindowSelection::on_pushButton_wAdd_pressed()
 {
-	return currentWindow;
+	
+}
+void WindowSelection::on_pushButton_wRemove_pressed()
+{
+	// Removing a single row from a QListView is a pain in the neck
+	// So we just remove the window from the engine and we update the list
+	engine->removeWindow(currentWindow);
+	currentWindow = NULL;
+	updateList();
+}
+void WindowSelection::on_pushButton_wRename_pressed()
+{
+	// We display the lineEdit on the currently selected item
+	// If no item is selected it does nothing
+	listView_WindowSelection->edit(listView_WindowSelection->currentIndex());
 }
 
-Profile* WindowSelection::getCurrentProfile()
-{
-	return currentProfile;
-}
+
+
+
+
+
+
+
+
 
 
 void WindowSelection::on_comboBox_ProfileSelection_currentIndexChanged(int index)

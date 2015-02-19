@@ -1,0 +1,2 @@
+Animate the changes in the preview
+Undo button for the remove window

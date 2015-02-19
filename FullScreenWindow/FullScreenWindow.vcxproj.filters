@@ -45,12 +45,6 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{aabb8895-725f-4a6f-b3db-eb5745be82b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Settings">
-      <UniqueIdentifier>{a968a255-871b-494e-a26a-b6b8916dbffd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Settings">
-      <UniqueIdentifier>{7d08688b-4db3-4aa1-8827-a4284bba4106}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\UI\UiSettings">
       <UniqueIdentifier>{f30a7949-0ade-4a47-8298-6311c3dd1e03}</UniqueIdentifier>
     </Filter>
@@ -63,16 +57,22 @@
     <Filter Include="Source Files\UI\UiSettings\Bottom">
       <UniqueIdentifier>{307124c3-2e0b-45c5-83a3-83268a4ffba4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{a968a255-871b-494e-a26a-b6b8916dbffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{7d08688b-4db3-4aa1-8827-a4284bba4106}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Profile.cpp">
-      <Filter>Source Files\Settings</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Settings</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="WindowHandling.cpp">
       <Filter>Source Files\Wrapper</Filter>
@@ -87,7 +87,7 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="Monitor.cpp">
-      <Filter>Source Files\Settings</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="MonitorHandling.cpp">
       <Filter>Source Files\Wrapper</Filter>
@@ -96,10 +96,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonitorList.cpp">
-      <Filter>Source Files\Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files\UI\UiSettings</Filter>
@@ -125,6 +122,9 @@
     <ClCompile Include="ProfileSelector.cpp">
       <Filter>Source Files\UI\UiSettings\Bottom</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fullscreenwindow.ui">
@@ -139,10 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Profile.h">
-      <Filter>Header Files\Settings</Filter>
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>Header Files\Settings</Filter>
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="WindowHandling.h">
       <Filter>Header Files\Wrapper</Filter>
@@ -151,7 +151,7 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Monitor.h">
-      <Filter>Header Files\Settings</Filter>
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="MonitorHandling.h">
       <Filter>Header Files\Wrapper</Filter>
@@ -166,10 +166,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MonitorList.h">
-      <Filter>Header Files\Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="WindowSelection.h">
       <Filter>Header Files\UI\UiSettings</Filter>
@@ -188,6 +185,9 @@
     </ClInclude>
     <ClInclude Include="Settings.h">
       <Filter>Header Files\UI\UiSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -77,4 +77,24 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	proList->push_back(pro);
 
+	// TEST
+	pro = Profile();
+	pro.setName(L"Test");
+
+	pro.width = 300;
+	pro.height = 200;
+	pro.isSizeRelative = false;
+
+	pro.xpos = 500;
+	pro.ypos = 200;
+	pro.anchor = Anchor::TOPLEFT;
+
+	pro.mon = monList->getPrimaryMonitor();
+
+	pro.isCursorCliped = false;
+	pro.isTitleBarHidden = true;
+	pro.isTaskBarShown = false;
+
+	proList->push_back(pro);
+
 }

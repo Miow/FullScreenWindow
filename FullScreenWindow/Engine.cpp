@@ -40,3 +40,24 @@ Profile* Engine::getDefaultProfile()
 }
 
 
+void Engine::removeWindow(Window* win)
+{
+	if (win == NULL)
+	{
+		LOG(fatal) << "Null argument";
+		return;
+	}
+
+	// Removing the window from the list
+	for (auto it = winList->begin(); it != winList->end(); it++)
+	{
+		if (&(*it) == win)
+		{
+			winList->erase(it);
+			return;
+		}
+	}
+
+	LOG(fatal) << "Enable to remove the window \"" << win->getName() << "\" from the list because it is not present on it."; 
+}
+

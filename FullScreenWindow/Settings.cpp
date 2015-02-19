@@ -12,6 +12,9 @@ Settings::Settings(QMainWindow* mainWindow, Ui::FullScreenWindowClass* ui, Engin
 		mainWindow,
 		engine,
 		ui->listView_WindowSelection,
+		ui->pushButton_wAdd,
+		ui->pushButton_wRemove,
+		ui->pushButton_wRename,
 		ui->comboBox_ProfileSelection,
 		ui->lineEdit_ProcessName
 		);

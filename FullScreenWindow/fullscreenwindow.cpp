@@ -21,7 +21,11 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		&FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked
 		);
+
+
+
 	// // WindowSelection
+	// // // ListView
 	connect(
 		ui->listView_WindowSelection->selectionModel(),
 		SIGNAL(currentChanged(QModelIndex, QModelIndex)),
@@ -34,12 +38,35 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		SLOT(on_listView_WindowSelection_EditEnd(QWidget*, QAbstractItemDelegate::EndEditHint))
 		);
+	// // // Buttons
+	connect(
+		ui->pushButton_wAdd,
+		SIGNAL(pressed()),
+		this,
+		SLOT(on_pushButton_wAdd_pressed())
+		);
+	connect(
+		ui->pushButton_wRemove,
+		SIGNAL(pressed()),
+		this,
+		SLOT(on_pushButton_wRemove_pressed())
+		);
+	connect(
+		ui->pushButton_wRename,
+		SIGNAL(pressed()),
+		this,
+		SLOT(on_pushButton_wRename_pressed())
+		);
+	// // // Settings
 	connect(
 		ui->comboBox_ProfileSelection,
 		SIGNAL(currentIndexChanged(int)),
 		this,
 		SLOT(on_comboBox_ProfileSelection_currentIndexChanged(int))
 		);
+
+
+
 	// // Settings
 	connect(
 		ui->comboBox_ProfileSelection_2,
@@ -132,6 +159,18 @@ void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbs
 {
 	QString NewValue = reinterpret_cast<QLineEdit*>(editor)->text();
 	settings->windowSelection.on_listView_EditEnd(NewValue);
+}
+void FullScreenWindow::on_pushButton_wAdd_pressed()
+{
+	settings->windowSelection.on_pushButton_wAdd_pressed();
+}
+void FullScreenWindow::on_pushButton_wRemove_pressed()
+{
+	settings->windowSelection.on_pushButton_wRemove_pressed();
+}
+void FullScreenWindow::on_pushButton_wRename_pressed()
+{
+	settings->windowSelection.on_pushButton_wRename_pressed();
 }
 void FullScreenWindow::on_comboBox_ProfileSelection_currentIndexChanged(int index)
 {

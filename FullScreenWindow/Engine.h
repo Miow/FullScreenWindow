@@ -15,15 +15,15 @@ public:
 	~Engine();
 
 	MonitorList* monList;
-	// Updates the monitor list
+	// Updates the monitor list with the current informations from the system
 	void monitor_updateList();
 
 
 	std::vector<Profile>* proList;
-	// Returns the default profile	
+	// Returns the default profile
 	Profile* getDefaultProfile();
 
 	std::vector<Window>* winList;
-
+	void removeWindow(Window*);
 };
 
