@@ -167,6 +167,10 @@ void WindowSelection::on_comboBox_ProfileSelection_currentIndexChanged(int index
 		currentWindow->pro = newProfile;
 		currentProfile = newProfile;
 	}
+	else if (newProfile != NULL)
+	{
+		currentProfile = newProfile;
+	}
 
 }
 
@@ -236,7 +240,12 @@ void WindowSelection::comboBox_ProfileSelection_setSelected(QString profileName)
 
 QString WindowSelection::getCurrentProcessName()
 {
-	return lineEdit_ProcessName->text();
+	QString currentProcessName = lineEdit_ProcessName->text();
+	if (currentProcessName == NULL)
+	{
+		currentProcessName = QString();
+	}
+	return currentProcessName;
 }
 void WindowSelection::setCurrentProcessName(QString newProcessName)
 {

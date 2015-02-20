@@ -11,7 +11,7 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	settings = new Settings(this, ui, engine);
 
 	preview = new Preview(ui->graphicsView_Preview);
-	preview->defaultView();
+	preview->defaultView(NULL);
 
 
 	// CONNECTIONS
@@ -166,7 +166,7 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	////////////////////////////////////////
 
 	updateAll();
-	preview->defaultView();
+	preview->defaultView(NULL);
 }
 
 FullScreenWindow::~FullScreenWindow()
@@ -196,14 +196,7 @@ void FullScreenWindow::updatePreview()
 		);
 }
 
-void FullScreenWindow::updateProfilesSettings(Profile* pro)
-{
-	//settings->profileSettings.update_comboBox_Monitor();
-	// TODO: UPDATE SELECTED MONITOR
 
-	// Update monitor selection box
-	settings->profileSettings.update_comboBox_Monitor(pro->getQMonitorName());
-}
 
 
 
@@ -226,7 +219,6 @@ void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 void FullScreenWindow::on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
 	settings->windowSelection.on_listView_currentRowChanged(current, previous);
-	updatePreview();
 }
 void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbstractItemDelegate::EndEditHint hint)
 {
@@ -260,7 +252,6 @@ void FullScreenWindow::on_comboBox_ProfileSelection_2_currentIndexChanged(int in
 {
 	settings->profileSelector.on_comboBox_ProfileSelection_2_currentIndexChanged(index);
 	settings->profileSettings.updateAll(settings->profileSelector.getCurrentProfile());
-	updatePreview();
 }
 
 // // // ProfileSettings
@@ -276,34 +267,42 @@ void FullScreenWindow::on_checkBox_CursorClip_stateChanged(int state)
 void FullScreenWindow::on_checkBox_TitleBar_stateChanged(int state)
 {
 	settings->profileSettings.on_checkBox_TitleBar_stateChanged(state);
+	updatePreview();
 }
 void FullScreenWindow::on_spinBox_Height_valueChanged(int i)
 {
 	settings->profileSettings.on_spinBox_Height_valueChanged(i);
+	updatePreview();
 }
 void FullScreenWindow::on_spinBox_Width_valueChanged(int i)
 {
 	settings->profileSettings.on_spinBox_Width_valueChanged(i);
+	updatePreview();
 }
 void FullScreenWindow::on_checkBox_SizeIsRelative_stateChanged(int state)
 {
 	settings->profileSettings.on_checkBox_SizeIsRelative_stateChanged(state);
+	updatePreview();
 }
 void FullScreenWindow::on_checkBox_TaskBar_stateChanged(int state)
 {
 	settings->profileSettings.on_checkBox_TaskBar_stateChanged(state);
+	updatePreview();
 }
 void FullScreenWindow::on_spinBox_Xpos_valueChanged(int i)
 {
 	settings->profileSettings.on_spinBox_Xpos_valueChanged(i);
+	updatePreview();
 }
 void FullScreenWindow::on_spinBox_Ypos_valueChanged(int i)
 {
 	settings->profileSettings.on_spinBox_Ypos_valueChanged(i);
+	updatePreview();
 }
 void FullScreenWindow::on_comboBox_Anchor_currentIndexChanged(int index)
 {
 	settings->profileSettings.on_comboBox_Anchor_currentIndexChanged(index);
+	updatePreview();
 }
 
 

@@ -28,7 +28,6 @@ private:
 
 	void updateAll();
 	void updatePreview();
-	void updateProfilesSettings(Profile* pro);
 
 private slots:
 	void on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);

@@ -62,31 +62,47 @@ Preview::~Preview()
 	delete scene;
 }
 
-void Preview::defaultView()
+void Preview::defaultView(Monitor* mon)
 {
-	drawScreen(1920, 1080);
-	drawWindow(400, 200, 800, 600, false, false);
+	int width = 1920;
+	int height = 1080;
+
+	if (mon != NULL)
+	{
+		width = mon->width;
+		height = mon->height;
+	}
+
+	drawScreen(width, height);
+	drawWindow(width / 5, height / 5, width / 2.5, height / 2, false, false);
 }
 
-void Preview::update(const Profile* pro, const Monitor* mon)
+void Preview::update(Profile* pro, Monitor* mon)
 {
-	drawScreen(mon->width, mon->height);
-
-	int xpos, ypos, width, height;
-	if (pro->isSizeRelative)
+	if (pro->getName() == PROFILE_DEFAULT_DISABLED)
 	{
-		width = mon->width + pro->width;
-		height = mon->height + pro->height;
+		defaultView(mon);
 	}
 	else
 	{
-		width = pro->width;
-		height = pro->height;
-	}
-	xpos = pro->xpos;
-	ypos = pro->ypos;
+		drawScreen(mon->width, mon->height);
 
-	drawWindow(xpos, ypos, width, height, pro->isTitleBarHidden, pro->isSizeRelative && pro->isTaskBarShown);
+		int xpos, ypos, width, height;
+		if (pro->isSizeRelative)
+		{
+			width = mon->width + pro->width;
+			height = mon->height + pro->height;
+		}
+		else
+		{
+			width = pro->width;
+			height = pro->height;
+		}
+		xpos = pro->xpos;
+		ypos = pro->ypos;
+
+		drawWindow(xpos, ypos, width, height, pro->isTitleBarHidden, pro->isSizeRelative && pro->isTaskBarShown);
+	}
 }
 
 
@@ -149,6 +165,13 @@ void Preview::drawWindow(double xpos, double ypos, double width, double height, 
 		wHeight -= cTaskBarHeight;
 	}
 
+	windowTitleBar->setRect(
+		wX,
+		wY,
+		wWidth,
+		wHeight
+		);
+
 	if (isTitleBarHidden)
 	{
 		windowBackground->setRect(
@@ -168,8 +191,6 @@ void Preview::drawWindow(double xpos, double ypos, double width, double height, 
 	}
 	else
 	{
-		windowTitleBar->setRect(wX, wY, wWidth, wHeight);
-
 		windowBackground->setRect(
 			wX + cWindowBorderWidth,
 			wY + cWindowTitleBarHeight,

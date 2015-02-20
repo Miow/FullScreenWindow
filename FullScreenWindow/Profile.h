@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+#define PROFILE_DEFAULT_DISABLED L"Disabled"
+#define PROFILE_DEFAULT_FULLSCREEN L"Fullscreen"
 
 class Profile
 {

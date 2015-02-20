@@ -35,7 +35,7 @@ void ProfileSelector::on_comboBox_ProfileSelection_2_currentIndexChanged(int ind
 	Profile* currentProfile = NULL;
 	try
 	{
-		currentProfile = &(engine->proList->at(index));
+		currentProfile = &(engine->proList->at(index + 1));
 	}
 	catch (const std::out_of_range& oor)
 	{
@@ -68,7 +68,7 @@ void ProfileSelector::update_comboBox_ProfileSelection_2()
 
 
 	for (
-		auto it = engine->proList->begin();
+		auto it = engine->proList->begin()+1; // /!\ We skip the first profile because it is the 'Disabled' setting
 		it != engine->proList->end();
 		it++
 		)
@@ -109,7 +109,7 @@ Profile* ProfileSelector::getCurrentProfile()
 	int index = comboBox_ProfileSelection_2->currentIndex();
 	try
 	{
-		return &(engine->proList->at(index));
+		return &(engine->proList->at(index + 1));
 	}
 	catch (const std::out_of_range& oor)
 	{

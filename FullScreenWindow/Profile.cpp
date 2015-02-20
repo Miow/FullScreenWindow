@@ -74,7 +74,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 	// DISABLED
 	pro = Profile();
 	pro.isUserCreated = false;
-	pro.setName(L"Disabled");
+	pro.setName(PROFILE_DEFAULT_DISABLED);
 
 	pro.width = 0;
 	pro.height = 0;
@@ -96,7 +96,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 	// FULLSCREEN
 	pro = Profile();
 	pro.isUserCreated = false;
-	pro.setName(L"Fullscreen");
+	pro.setName(PROFILE_DEFAULT_FULLSCREEN);
 
 	pro.width = 0;
 	pro.height = 0;

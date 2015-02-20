@@ -52,7 +52,7 @@ namespace Wrapper
 				monList->at(0) = mon;
 			}
 
-			LOG(info) << ((isPrimary) ? "PRIMARY " : "") << "Monitor \"" << name.c_str() << "\" found, coordonates: [(" << left << ", " << top << "), (" << right << ", " << bottom << ")].";
+			//LOG(info) << ((isPrimary) ? "PRIMARY " : "") << "Monitor \"" << name.c_str() << "\" found, coordonates: [(" << left << ", " << top << "), (" << right << ", " << bottom << ")].";
 		}
 		else
 		{
