@@ -64,7 +64,7 @@ namespace Wrapper
 		{
 			if (wcscmp(inst->windowNameBuffer, it->getName().c_str()) == 0)
 			{
-				WindowHandling::applyProfile(hWnd, it->pro);
+				WindowHandling::applyProfile(hWnd, it->pro, inst->engine->getMonitorByName(it->pro->getMonitorName()));
 				break;
 			}
 		}

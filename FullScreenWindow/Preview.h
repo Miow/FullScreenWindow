@@ -15,7 +15,7 @@ public:
 	~Preview();
 
 	void defaultView();
-	void update(const Profile* pro);
+	void update(const Profile* pro, const Monitor* mon);
 	void drawScreen(double width, double height);
 	void drawWindow(double xpos, double ypos, double width, double height, bool isTitleBarHidden, bool isTaskBarShown);
 

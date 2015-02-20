@@ -25,9 +25,21 @@ Settings::Settings(QMainWindow* mainWindow, Ui::FullScreenWindowClass* ui, Engin
 		ui->pushButton_Profile_Delete,
 		ui->pushButton_Profile_Duplicate
 		); 
-	parameters = Parameters(
+	profileSettings = ProfileSettings(
 		engine,
-		ui->comboBox_Monitor
+		ui->groupBox_Parameters,
+		ui->groupBox_Size,
+		ui->groupBox_Position,
+		ui->comboBox_Monitor,
+		ui->checkBox_CursorClip,
+		ui->checkBox_TitleBar,
+		ui->spinBox_Height,
+		ui->spinBox_Width,
+		ui->checkBox_SizeIsRelative,
+		ui->checkBox_TaskBar,
+		ui->spinBox_Xpos,
+		ui->spinBox_Ypos,
+		ui->comboBox_Anchor
 		);
 
 }

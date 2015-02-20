@@ -12,8 +12,6 @@ public:
 	Window();
 	~Window();
 
-	std::wstring processName;
-
 	Profile* pro;
 
 	void setName(std::wstring newName);
@@ -22,8 +20,16 @@ public:
 	const std::wstring getName();
 	const QString getQName();
 
+	void setProcessName(std::wstring newProcessName);
+	void setProcessName(QString newProcessName);
+
+	const std::wstring getProcessName();
+	const QString getQProcessName();
+
 private:
 	std::wstring name;
 	QString qname;
+
+	std::wstring processName;
 };
 

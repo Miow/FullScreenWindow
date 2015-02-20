@@ -66,7 +66,16 @@ void WindowSelection::on_listView_currentRowChanged(const QModelIndex & current,
 		LOG(fatal) << "Unable to find the selected window, index out of bound: " << oor.what();
 	}
 
-	comboBox_ProfileSelection_update();
+	if (currentWindow != NULL)
+	{
+		setCurrentProcessName(currentWindow->getQProcessName());
+	}
+	else
+	{
+		setCurrentProcessName(NULL);
+	}
+
+	update_comboBox_ProfileSelection();
 }
 
 
@@ -98,6 +107,10 @@ void WindowSelection::updateList()
 	}
 
 	model->setStringList(list);
+
+	// Since we lost the selection we update the fields
+	update_comboBox_ProfileSelection();
+	setCurrentProcessName(NULL);
 
 }
 
@@ -157,7 +170,7 @@ void WindowSelection::on_comboBox_ProfileSelection_currentIndexChanged(int index
 
 }
 
-void WindowSelection::comboBox_ProfileSelection_update()
+void WindowSelection::update_comboBox_ProfileSelection()
 {
 	QString lastSelectedProfile;
 	if(currentWindow != NULL)
@@ -223,9 +236,20 @@ void WindowSelection::comboBox_ProfileSelection_setSelected(QString profileName)
 
 QString WindowSelection::getCurrentProcessName()
 {
-	return QString();
+	return lineEdit_ProcessName->text();
 }
 void WindowSelection::setCurrentProcessName(QString newProcessName)
 {
-
+	if (newProcessName == NULL)
+	{
+		lineEdit_ProcessName->clear();
+	}
+	else
+	{
+		lineEdit_ProcessName->setText(newProcessName);
+	}
+}
+void WindowSelection::on_lineEdit_ProcessName_editingFinished()
+{
+	getCurrentWindow()->setProcessName(getCurrentProcessName());
 }

@@ -1,2 +1,6 @@
-Animate the changes in the preview
 Undo button for the remove window
+Fade out useless buttons in the window selection
+
+Animate the changes in the preview
+
+Confirmation popup on profile delete with the number of windows using it

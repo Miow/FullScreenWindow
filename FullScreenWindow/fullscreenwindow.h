@@ -27,8 +27,8 @@ private:
 	Settings* settings;
 
 	void updateAll();
-	void updateView();
-	void updateProfilesSettings(const Profile* pro);
+	void updatePreview();
+	void updateProfilesSettings(Profile* pro);
 
 private slots:
 	void on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous);
@@ -38,8 +38,18 @@ private slots:
 	void on_pushButton_wRename_pressed();
 	void on_pushButton_toggleProfilesSettings_clicked();
 	void on_comboBox_ProfileSelection_currentIndexChanged(int index);
+	void on_lineEdit_ProcessName_editingFinished();
 	void on_comboBox_ProfileSelection_2_currentIndexChanged(int index);
 	void on_comboBox_Monitor_currentIndexChanged(int index);
+	void on_checkBox_CursorClip_stateChanged(int state);
+	void on_checkBox_TitleBar_stateChanged(int state);
+	void on_spinBox_Height_valueChanged(int i);
+	void on_spinBox_Width_valueChanged(int i);
+	void on_checkBox_SizeIsRelative_stateChanged(int state);
+	void on_checkBox_TaskBar_stateChanged(int state);
+	void on_spinBox_Xpos_valueChanged(int i);
+	void on_spinBox_Ypos_valueChanged(int i);
+	void on_comboBox_Anchor_currentIndexChanged(int index);
 
 protected:
 	bool eventFilter(QObject *target, QEvent *event);

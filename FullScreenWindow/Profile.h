@@ -8,24 +8,26 @@
 #include <string>
 #include <vector>
 
-enum Anchor
-{
-	TOPLEFT,
-	TOPRIGHT,
-	CENTER,
-	BOTTOMLEFT,
-	BOTTOMRIGHT
-};
-
 
 class Profile
 {
 public:
+	enum Anchor
+	{
+		TOPLEFT,
+		TOPRIGHT,
+		CENTER,
+		BOTTOMLEFT,
+		BOTTOMRIGHT
+	};
+
 	Profile();
 	~Profile();
 
 	static void initDefaults(std::vector<Profile>* proList, MonitorList* monList);
 	
+	bool isUserCreated = true;
+
 	// Name
 	void setName(std::wstring newName);
 	void setName(QString newName);
@@ -48,12 +50,19 @@ public:
 	bool isTitleBarHidden = false;
 	bool isTaskBarShown = false;
 
-	Monitor* mon;
+	// Monitor
+	void setMonitorName(std::wstring newMonitorName);
+	void setMonitorName(QString newMonitorName);
+	const std::wstring getMonitorName();
+	const QString getQMonitorName();
 
 private:
 	// A profile is identified by its name which is unique
 	std::wstring name = L"";
 	QString qname;
+
+	std::wstring monitorName = L"";
+	QString qmonitorName;
 };
 
 

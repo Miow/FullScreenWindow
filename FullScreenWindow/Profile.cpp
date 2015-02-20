@@ -10,6 +10,9 @@ Profile::~Profile()
 {
 }
 
+
+// Name
+
 void Profile::setName(std::wstring newName)
 {
 	name = newName;
@@ -32,12 +35,45 @@ const QString Profile::getQName()
 	return qname;
 }
 
+
+// Monitor name
+
+void Profile::setMonitorName(std::wstring newMonitorName)
+{
+	monitorName = newMonitorName;
+	qmonitorName = QString::fromWCharArray(newMonitorName.c_str());
+}
+
+void Profile::setMonitorName(QString newMonitorName)
+{
+	qmonitorName = newMonitorName;
+	monitorName = newMonitorName.toStdWString();
+}
+
+const std::wstring Profile::getMonitorName()
+{
+	return monitorName;
+}
+
+const QString Profile::getQMonitorName()
+{
+	return qmonitorName;
+}
+
+
+
+
+
+
+
+
 void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 {
 	Profile pro;
 
 	// DISABLED
 	pro = Profile();
+	pro.isUserCreated = false;
 	pro.setName(L"Disabled");
 
 	pro.width = 0;
@@ -48,7 +84,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
 
-	pro.mon = monList->getPrimaryMonitor();
+	pro.setMonitorName(monList->getPrimaryMonitor()->getName());
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = false;
@@ -59,6 +95,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 
 	// FULLSCREEN
 	pro = Profile();
+	pro.isUserCreated = false;
 	pro.setName(L"Fullscreen");
 
 	pro.width = 0;
@@ -69,7 +106,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 	pro.ypos = 0;
 	pro.anchor = Anchor::TOPLEFT;
 
-	pro.mon = monList->getPrimaryMonitor();
+	pro.setMonitorName(monList->getPrimaryMonitor()->getName());
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;
@@ -89,7 +126,7 @@ void Profile::initDefaults(std::vector<Profile>* proList, MonitorList* monList)
 	pro.ypos = 200;
 	pro.anchor = Anchor::TOPLEFT;
 
-	pro.mon = monList->getPrimaryMonitor();
+	pro.setMonitorName(monList->getPrimaryMonitor()->getName());
 
 	pro.isCursorCliped = false;
 	pro.isTitleBarHidden = true;

@@ -59,13 +59,13 @@ public:
 
 	void on_comboBox_ProfileSelection_currentIndexChanged(int index);
 	// Updates the selected profile of the combobox
-	void comboBox_ProfileSelection_update();
+	void update_comboBox_ProfileSelection();
 
 
 	QLineEdit* lineEdit_ProcessName;
 	QString getCurrentProcessName();
 	void setCurrentProcessName(QString newProcessName);
-
+	void on_lineEdit_ProcessName_editingFinished();
 
 
 private:

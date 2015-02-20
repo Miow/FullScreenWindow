@@ -68,15 +68,15 @@ void Preview::defaultView()
 	drawWindow(400, 200, 800, 600, false, false);
 }
 
-void Preview::update(const Profile* pro)
+void Preview::update(const Profile* pro, const Monitor* mon)
 {
-	drawScreen(pro->mon->width, pro->mon->height);
+	drawScreen(mon->width, mon->height);
 
 	int xpos, ypos, width, height;
 	if (pro->isSizeRelative)
 	{
-		width = pro->mon->width + pro->width;
-		height = pro->mon->height + pro->height;
+		width = mon->width + pro->width;
+		height = mon->height + pro->height;
 	}
 	else
 	{

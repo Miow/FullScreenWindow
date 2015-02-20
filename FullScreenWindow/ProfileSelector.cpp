@@ -15,7 +15,6 @@ ProfileSelector::ProfileSelector(Engine* engine,
 	this->pushButton_Profile_Save = pushButton_Profile_Save;
 	this->pushButton_Profile_Delete = pushButton_Profile_Delete;
 	this->pushButton_Profile_Duplicate = pushButton_Profile_Duplicate;
-
 }
 
 
@@ -33,15 +32,78 @@ ProfileSelector::~ProfileSelector()
 
 void ProfileSelector::on_comboBox_ProfileSelection_2_currentIndexChanged(int index)
 {
-	Profile* currentPro = &(engine->proList->at(index));
-	//TODO: ici faut check et tout et griser les boutons qui servent a rien
-}
-/*
-void ProfileSelector::update_comboBox_ProfileSelection();
-{
+	Profile* currentProfile = NULL;
+	try
+	{
+		currentProfile = &(engine->proList->at(index));
+	}
+	catch (const std::out_of_range& oor)
+	{
+		LOG(fatal) << "Out of bound while trying to fetch the selected profile: " << oor.what();
+		
+		// We reset the combobox
+		update_comboBox_ProfileSelection_2();
+		return;
+	}
+
+	// The user can only change the name for custom profiles
+	comboBox_ProfileSelection_2->setEditable(currentProfile->isUserCreated);
+	
 
 }
-*/
+
+
+
+void ProfileSelector::update_comboBox_ProfileSelection_2()
+{
+	QString lastSelectedProfile = comboBox_ProfileSelection_2_getSelected();
+
+
+	// Clears the content of the list
+	int nbItems = comboBox_ProfileSelection_2->count();
+	for (int i = 0; i < nbItems; i++)
+	{
+		comboBox_ProfileSelection_2->removeItem(0);
+	}
+
+
+	for (
+		auto it = engine->proList->begin();
+		it != engine->proList->end();
+		it++
+		)
+	{
+		QString name = it->getQName();
+		comboBox_ProfileSelection_2->addItem(name);
+	}
+
+	comboBox_ProfileSelection_2_setSelected(lastSelectedProfile);
+}
+
+QString ProfileSelector::comboBox_ProfileSelection_2_getSelected()
+{
+	return comboBox_ProfileSelection_2->currentText();
+}
+void ProfileSelector::comboBox_ProfileSelection_2_setSelected(Profile* pro)
+{
+	comboBox_ProfileSelection_2_setSelected(pro->getQName());
+}
+void ProfileSelector::comboBox_ProfileSelection_2_setSelected(QString profileName)
+{
+	// Searching the index of the monitor in the list
+	int index = comboBox_ProfileSelection_2->findText(profileName);
+	// If it is not found, default to primary
+	if (index == -1)
+	{
+		LOG(error) << "Profile \"" << profileName.toStdString() << "\" not found in the combobox, selecting default.";
+		index = 0;
+	}
+	comboBox_ProfileSelection_2->setCurrentIndex(index);
+}
+
+
+
+
 Profile* ProfileSelector::getCurrentProfile()
 {
 	int index = comboBox_ProfileSelection_2->currentIndex();

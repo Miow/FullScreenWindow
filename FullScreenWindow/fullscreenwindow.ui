@@ -85,7 +85,7 @@
         </layout>
        </item>
        <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="horizontalLayout_ProfileSettingsBot">
          <item>
           <widget class="QGroupBox" name="groupBox_Parameters">
            <property name="title">
@@ -312,7 +312,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QSpinBox" name="spinBox_Y">
+               <widget class="QSpinBox" name="spinBox_Ypos">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -344,7 +344,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QSpinBox" name="spinBox_X">
+               <widget class="QSpinBox" name="spinBox_Xpos">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -669,8 +669,8 @@ border: none</string>
   <tabstop>checkBox_TitleBar</tabstop>
   <tabstop>spinBox_Width</tabstop>
   <tabstop>spinBox_Height</tabstop>
-  <tabstop>spinBox_Y</tabstop>
-  <tabstop>spinBox_X</tabstop>
+  <tabstop>spinBox_Ypos</tabstop>
+  <tabstop>spinBox_Xpos</tabstop>
   <tabstop>graphicsView_Preview</tabstop>
  </tabstops>
  <resources>

@@ -54,19 +54,19 @@ namespace Wrapper
 
 	}
 
-	void WindowHandling::moveAndResizeWindow(HWND hWnd, const Profile* pro)
+	void WindowHandling::moveAndResizeWindow(HWND hWnd, const Profile* pro, const Monitor* mon)
 	{
 		// Calculating the dimentions depending on the screen
 		
 		int x, y, width, height;
 
-		x = pro->xpos + pro->mon->left;
-		y = pro->ypos + pro->mon->top;
+		x = pro->xpos + mon->left;
+		y = pro->ypos + mon->top;
 
 		if (pro->isSizeRelative)
 		{
-			width = pro->width + pro->mon->width;
-			height = pro->height + pro->mon->height;
+			width = pro->width + mon->width;
+			height = pro->height + mon->height;
 		}
 		else
 		{
@@ -107,7 +107,7 @@ namespace Wrapper
 	}
 
 
-	void WindowHandling::applyProfile(HWND hWnd, Profile* pro)
+	void WindowHandling::applyProfile(HWND hWnd, Profile* pro, Monitor* mon)
 	{
 		// Removing title bars
 		if (pro->isTitleBarHidden)
@@ -116,7 +116,7 @@ namespace Wrapper
 		}
 
 		// Resizeing and moving
-		moveAndResizeWindow(hWnd, pro);
+		moveAndResizeWindow(hWnd, pro, mon);
 
 		// Cliping the cursor
 		if (pro->isCursorCliped)

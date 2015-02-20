@@ -17,6 +17,9 @@ public:
 	MonitorList* monList;
 	// Updates the monitor list with the current informations from the system
 	void monitor_updateList();
+	// Returns a pointer to the monitor with the specified name
+	// If it does not exist, returns a pointer to the primary monitor
+	Monitor* getMonitorByName(std::wstring monitorName);
 
 
 	std::vector<Profile>* proList;

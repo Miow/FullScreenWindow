@@ -5,7 +5,7 @@
 
 #include "Engine.h"
 
-#include "Parameters.h"
+#include "ProfileSettings.h"
 #include "ProfileSelector.h"
 
 #include "WindowSelection.h"
@@ -21,7 +21,7 @@ public:
 	Ui::FullScreenWindowClass* ui;
 	Engine* engine;
 
-	Parameters parameters;
+	ProfileSettings profileSettings;
 	WindowSelection windowSelection;
 	ProfileSelector profileSelector;
 	

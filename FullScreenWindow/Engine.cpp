@@ -40,6 +40,11 @@ Profile* Engine::getDefaultProfile()
 }
 
 
+Monitor* Engine::getMonitorByName(std::wstring monitorName)
+{
+	return monList->getMonitorByName(monitorName);
+}
+
 void Engine::removeWindow(Window* win)
 {
 	if (win == NULL)

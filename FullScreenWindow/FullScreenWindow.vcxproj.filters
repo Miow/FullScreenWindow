@@ -116,14 +116,14 @@
     <ClCompile Include="WindowsEvent.cpp">
       <Filter>Source Files\Wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="Parameters.cpp">
-      <Filter>Source Files\UI\UiSettings\Bottom</Filter>
-    </ClCompile>
     <ClCompile Include="ProfileSelector.cpp">
       <Filter>Source Files\UI\UiSettings\Bottom</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileSettings.cpp">
+      <Filter>Source Files\UI\UiSettings\Bottom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +177,6 @@
     <ClInclude Include="WindowsEvent.h">
       <Filter>Header Files\Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="Parameters.h">
-      <Filter>Header Files\UI\UiSettings\Bottom</Filter>
-    </ClInclude>
     <ClInclude Include="ProfileSelector.h">
       <Filter>Header Files\UI\UiSettings\Bottom</Filter>
     </ClInclude>
@@ -189,10 +186,18 @@
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="ProfileSettings.h">
+      <Filter>Header Files\UI\UiSettings\Bottom</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="debug.log">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="Todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

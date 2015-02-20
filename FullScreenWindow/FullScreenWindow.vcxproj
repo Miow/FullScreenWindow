@@ -192,7 +192,7 @@
     <ClCompile Include="Profile.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Parameters.cpp" />
+    <ClCompile Include="ProfileSettings.cpp" />
     <ClCompile Include="ProfileSelector.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -250,7 +250,7 @@
     <ClInclude Include="GeneratedFiles\ui_fullscreenwindow.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MonitorList.h" />
-    <ClInclude Include="Parameters.h" />
+    <ClInclude Include="ProfileSettings.h" />
     <ClInclude Include="ProfileSelector.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
@@ -286,6 +286,11 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="debug.log" />
+    <Text Include="Todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

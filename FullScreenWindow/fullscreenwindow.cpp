@@ -17,9 +17,9 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 	// CONNECTIONS
 	connect(
 		ui->pushButton_toggleProfilesSettings,
-		&QPushButton::clicked,
+		SIGNAL(pressed()),
 		this,
-		&FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked
+		SLOT(on_pushButton_toggleProfilesSettings_clicked())
 		);
 
 
@@ -64,6 +64,12 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		SLOT(on_comboBox_ProfileSelection_currentIndexChanged(int))
 		);
+	connect(
+		ui->lineEdit_ProcessName,
+		SIGNAL(editingFinished()),
+		this,
+		SLOT(on_lineEdit_ProcessName_editingFinished())
+		);
 
 
 
@@ -74,18 +80,80 @@ FullScreenWindow::FullScreenWindow(QWidget *parent)
 		this,
 		SLOT(on_comboBox_ProfileSelection_2_currentIndexChanged(int))
 		);
-	// // // Parameters
+	// // // ProfileSettings
 	connect(
 		ui->comboBox_Monitor,
 		SIGNAL(currentIndexChanged(int)),
 		this,
 		SLOT(on_comboBox_Monitor_currentIndexChanged(int))
 		);
-	
+	connect(
+		ui->comboBox_Monitor,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(on_comboBox_Monitor_currentIndexChanged(int))
+		);
+	connect(
+		ui->checkBox_CursorClip,
+		SIGNAL(stateChanged(int)),
+		this,
+		SLOT(on_checkBox_CursorClip_stateChanged(int))
+		);
+	connect(
+		ui->checkBox_TitleBar,
+		SIGNAL(stateChanged(int)),
+		this,
+		SLOT(on_checkBox_TitleBar_stateChanged(int))
+		);
+	connect(
+		ui->spinBox_Height,
+		SIGNAL(valueChanged(int)),
+		this,
+		SLOT(on_spinBox_Height_valueChanged(int))
+		);
+	connect(
+		ui->spinBox_Width,
+		SIGNAL(valueChanged(int)),
+		this,
+		SLOT(on_spinBox_Width_valueChanged(int))
+		);
+	connect(
+		ui->checkBox_SizeIsRelative,
+		SIGNAL(stateChanged(int)),
+		this,
+		SLOT(on_checkBox_SizeIsRelative_stateChanged(int))
+		);
+	connect(
+		ui->checkBox_TaskBar,
+		SIGNAL(stateChanged(int)),
+		this,
+		SLOT(on_checkBox_TaskBar_stateChanged(int))
+		);
+	connect(
+		ui->spinBox_Xpos,
+		SIGNAL(valueChanged(int)),
+		this,
+		SLOT(on_spinBox_Xpos_valueChanged(int))
+		);
+	connect(
+		ui->spinBox_Ypos,
+		SIGNAL(valueChanged(int)),
+		this,
+		SLOT(on_spinBox_Ypos_valueChanged(int))
+		);
+	connect(
+		ui->comboBox_Anchor,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(on_comboBox_Anchor_currentIndexChanged(int))
+		);
+
 
 	// EVENT FILTER
 	ui->comboBox_Monitor->view()->installEventFilter(this);
-	ui->comboBox_ProfileSelection->view()->installEventFilter(this);
+
+
+
 
 	// TESTING
 	Window win;
@@ -111,25 +179,30 @@ FullScreenWindow::~FullScreenWindow()
 
 void FullScreenWindow::updateAll()
 {
-
 	settings->windowSelection.updateList();
-	settings->windowSelection.comboBox_ProfileSelection_update();
-	settings->parameters.update_comboBox_Monitor();
-}
+	settings->windowSelection.update_comboBox_ProfileSelection();
 
-void FullScreenWindow::updateView()
-{
-	preview->update(settings->getCurrentProfile());
+	settings->profileSelector.update_comboBox_ProfileSelection_2();
+	settings->profileSettings.update_comboBox_Monitor();
 
 }
 
-void FullScreenWindow::updateProfilesSettings(const Profile* pro)
+void FullScreenWindow::updatePreview()
 {
-	//settings->parameters.update_comboBox_Monitor();
+	Profile* currentProfile = settings->getCurrentProfile();
+	preview->update(
+		currentProfile,
+		engine->getMonitorByName(currentProfile->getMonitorName())
+		);
+}
+
+void FullScreenWindow::updateProfilesSettings(Profile* pro)
+{
+	//settings->profileSettings.update_comboBox_Monitor();
 	// TODO: UPDATE SELECTED MONITOR
 
 	// Update monitor selection box
-	settings->parameters.update_comboBox_Monitor(pro->mon);
+	settings->profileSettings.update_comboBox_Monitor(pro->getQMonitorName());
 }
 
 
@@ -153,7 +226,7 @@ void FullScreenWindow::on_pushButton_toggleProfilesSettings_clicked()
 void FullScreenWindow::on_listView_WindowSelection_currentRowChanged(const QModelIndex & current, const QModelIndex & previous)
 {
 	settings->windowSelection.on_listView_currentRowChanged(current, previous);
-	updateView();
+	updatePreview();
 }
 void FullScreenWindow::on_listView_WindowSelection_EditEnd(QWidget *editor, QAbstractItemDelegate::EndEditHint hint)
 {
@@ -175,21 +248,62 @@ void FullScreenWindow::on_pushButton_wRename_pressed()
 void FullScreenWindow::on_comboBox_ProfileSelection_currentIndexChanged(int index)
 {
 	settings->windowSelection.on_comboBox_ProfileSelection_currentIndexChanged(index);
-	updateView();
+	updatePreview();
+}
+void FullScreenWindow::on_lineEdit_ProcessName_editingFinished()
+{
+	settings->windowSelection.on_lineEdit_ProcessName_editingFinished();
 }
 
 // // Settings
 void FullScreenWindow::on_comboBox_ProfileSelection_2_currentIndexChanged(int index)
 {
 	settings->profileSelector.on_comboBox_ProfileSelection_2_currentIndexChanged(index);
-	updateView();
+	settings->profileSettings.updateAll(settings->profileSelector.getCurrentProfile());
+	updatePreview();
 }
 
-// // // Parameters
+// // // ProfileSettings
 void FullScreenWindow::on_comboBox_Monitor_currentIndexChanged(int index)
 {
-	settings->parameters.on_comboBox_Monitor_currentIndexChanged(index);
-	updateView();
+	settings->profileSettings.on_comboBox_Monitor_currentIndexChanged(index);
+	updatePreview();
+}
+void FullScreenWindow::on_checkBox_CursorClip_stateChanged(int state)
+{
+	settings->profileSettings.on_checkBox_CursorClip_stateChanged(state);
+}
+void FullScreenWindow::on_checkBox_TitleBar_stateChanged(int state)
+{
+	settings->profileSettings.on_checkBox_TitleBar_stateChanged(state);
+}
+void FullScreenWindow::on_spinBox_Height_valueChanged(int i)
+{
+	settings->profileSettings.on_spinBox_Height_valueChanged(i);
+}
+void FullScreenWindow::on_spinBox_Width_valueChanged(int i)
+{
+	settings->profileSettings.on_spinBox_Width_valueChanged(i);
+}
+void FullScreenWindow::on_checkBox_SizeIsRelative_stateChanged(int state)
+{
+	settings->profileSettings.on_checkBox_SizeIsRelative_stateChanged(state);
+}
+void FullScreenWindow::on_checkBox_TaskBar_stateChanged(int state)
+{
+	settings->profileSettings.on_checkBox_TaskBar_stateChanged(state);
+}
+void FullScreenWindow::on_spinBox_Xpos_valueChanged(int i)
+{
+	settings->profileSettings.on_spinBox_Xpos_valueChanged(i);
+}
+void FullScreenWindow::on_spinBox_Ypos_valueChanged(int i)
+{
+	settings->profileSettings.on_spinBox_Ypos_valueChanged(i);
+}
+void FullScreenWindow::on_comboBox_Anchor_currentIndexChanged(int index)
+{
+	settings->profileSettings.on_comboBox_Anchor_currentIndexChanged(index);
 }
 
 
@@ -209,24 +323,11 @@ bool FullScreenWindow::eventFilter(QObject *target, QEvent *event)
 		{
 		case QEvent::Show:
 			// The ComboBox has been shown and needs to be updated
-			settings->parameters.update_comboBox_Monitor();
+			settings->profileSettings.update_comboBox_Monitor();
 			return false;
 		default:
 			break;
 		};
 	}
-	else if (target == ui->comboBox_ProfileSelection->view())
-	{
-		switch (event->type())
-		{
-		case QEvent::Show:
-			// The ComboBox has been shown and needs to be updated
-			settings->windowSelection.comboBox_ProfileSelection_update();
-			return false;
-		default:
-			break;
-		};
-	}
-
 	return false;
 }

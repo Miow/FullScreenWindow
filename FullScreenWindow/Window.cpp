@@ -32,3 +32,25 @@ const QString Window::getQName()
 {
 	return qname;
 }
+
+
+
+void Window::setProcessName(std::wstring newProcessName)
+{
+	processName = newProcessName;
+}
+
+void Window::setProcessName(QString newProcessName)
+{
+	processName = newProcessName.toStdWString();
+}
+
+const std::wstring Window::getProcessName()
+{
+	return processName;
+}
+
+const QString Window::getQProcessName()
+{
+	return QString::fromWCharArray(processName.c_str());
+}
